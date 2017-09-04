@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "191954178549",
+    "project_id": "api-5726481117340874610-420241"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191954178549:android:27d689d63f1b7a06",
+        "android_client_info": {
+          "package_name": "kesavan.studios.kesav.pushpull"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191954178549-fh0lm4imntgtact4epeq89stpb6ib88u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kesavan.studios.kesav.pushpull",
+            "certificate_hash": "88039d00e098df836566710b85c166ee92e15534"
+          }
+        },
+        {
+          "client_id": "191954178549-nfj0cn8v00m852c5r2mfr5icvp1avpa9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiEGuUI95l8hw9iuJArFFnznchOz9rYHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
