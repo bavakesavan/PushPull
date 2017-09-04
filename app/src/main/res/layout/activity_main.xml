@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:design="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
-        android:visibility="invisible"
         android:overScrollMode="always"
+        android:visibility="invisible"
         design:cardBackgroundColor="#000">
 
 
@@ -39,8 +38,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="40dp"
                 android:text="Push A"
-                android:textSize="24dp"
-                android:textColor="@color/bc1" />
+                android:textColor="@color/bc1"
+                android:textSize="24dp" />
 
         </RelativeLayout>
 
@@ -73,8 +72,8 @@
                 android:layout_below="@+id/cardVw"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:visibility="gone"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -142,9 +141,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView2"
-                        android:layout_toLeftOf="@+id/textView10"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView10"
                         android:clickable="true"
                         android:text="35"
                         android:textColor="@color/tc3"
@@ -259,12 +258,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="375dp"
                 android:layout_alignParentStart="true"
-                android:visibility="gone"
                 android:layout_below="@+id/cardView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -322,8 +321,8 @@
                         android:layout_alignBaseline="@+id/textView29"
                         android:layout_alignBottom="@+id/textView29"
                         android:layout_alignEnd="@+id/line21"
-                        android:layout_marginRight="13dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="13dp"
                         android:text="lbs"
                         android:textColor="@color/tc3"
                         android:textSize="20dp" />
@@ -333,9 +332,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView22"
-                        android:layout_toLeftOf="@+id/textView210"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView210"
                         android:text="90"
                         android:textColor="@color/tc3"
                         android:textSize="70dp" />
@@ -416,10 +415,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardView2"
                 android:layout_marginLeft="8dp"
-                android:visibility="gone"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -477,8 +476,8 @@
                         android:layout_alignBaseline="@+id/textView39"
                         android:layout_alignBottom="@+id/textView39"
                         android:layout_alignEnd="@+id/line31"
-                        android:layout_marginRight="13dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="13dp"
                         android:text="lbs"
                         android:textColor="@color/tc3"
                         android:textSize="20dp" />
@@ -488,9 +487,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView32"
-                        android:layout_toLeftOf="@+id/textView310"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView310"
                         android:text="60"
                         android:textColor="@color/tc3"
                         android:textSize="70dp" />
@@ -571,10 +570,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardView3"
                 android:layout_marginLeft="8dp"
-                android:visibility="gone"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -632,8 +631,8 @@
                         android:layout_alignBaseline="@+id/textView49"
                         android:layout_alignBottom="@+id/textView49"
                         android:layout_alignEnd="@+id/line41"
-                        android:layout_marginRight="13dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="13dp"
                         android:text="lbs"
                         android:textColor="@color/tc3"
                         android:textSize="20dp" />
@@ -643,9 +642,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView42"
-                        android:layout_toLeftOf="@+id/textView410"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView410"
                         android:text="40"
                         android:textColor="@color/tc3"
                         android:textSize="70dp" />
@@ -748,9 +747,9 @@
                 android:layout_below="@+id/cardView4"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:visibility="gone"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -808,8 +807,8 @@
                         android:layout_alignBaseline="@+id/textView59"
                         android:layout_alignBottom="@+id/textView59"
                         android:layout_alignEnd="@+id/line51"
-                        android:layout_marginRight="13dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="13dp"
                         android:text="lbs"
                         android:textColor="@color/tc3"
                         android:textSize="20dp" />
@@ -819,9 +818,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView52"
-                        android:layout_toLeftOf="@+id/textView510"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView510"
                         android:text="90"
                         android:textColor="@color/tc3"
                         android:textSize="70dp" />
@@ -925,10 +924,10 @@
                 android:layout_below="@+id/cardView5"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="8dp"
-                android:visibility="gone"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -985,8 +984,8 @@
                         android:layout_alignBaseline="@+id/textView69"
                         android:layout_alignBottom="@+id/textView69"
                         android:layout_alignEnd="@+id/line61"
-                        android:layout_marginRight="13dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="13dp"
                         android:text="lbs"
                         android:textColor="@color/tc3"
                         android:textSize="20dp" />
@@ -996,9 +995,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imageView62"
-                        android:layout_toLeftOf="@+id/textView610"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="1dp"
+                        android:layout_toLeftOf="@+id/textView610"
                         android:text="15"
                         android:textColor="@color/tc3"
                         android:textSize="70dp" />
@@ -1098,8 +1097,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardVw"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1123,8 +1122,8 @@
                         android:id="@+id/text2a1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta1"
                         android:layout_alignStart="@+id/texta1"
+                        android:layout_below="@+id/texta1"
                         android:text="25 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1132,17 +1131,17 @@
                     <View
                         android:layout_width="3dp"
                         android:layout_height="60dp"
-                        android:layout_marginTop="60dp"
                         android:layout_marginStart="35dp"
+                        android:layout_marginTop="60dp"
                         android:background="@color/bc5" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_1"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1158,8 +1157,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa1"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1173,6 +1172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
+
                         android:layout_marginStart="70dp"
                         android:layout_marginTop="35dp"
                         android:text="Crunches"
@@ -1183,8 +1183,8 @@
                         android:id="@+id/text2a2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta2"
                         android:layout_alignStart="@+id/texta2"
+                        android:layout_below="@+id/texta2"
                         android:text="10 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1198,10 +1198,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_2"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1217,8 +1217,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa2"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1242,8 +1242,8 @@
                         android:id="@+id/text2a3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta3"
                         android:layout_alignStart="@+id/texta3"
+                        android:layout_below="@+id/texta3"
                         android:text="25 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1257,10 +1257,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_3"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1276,8 +1276,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa3"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1301,8 +1301,8 @@
                         android:id="@+id/text2a4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta4"
                         android:layout_alignStart="@+id/texta4"
+                        android:layout_below="@+id/texta4"
                         android:text="15 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1316,10 +1316,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_4"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1334,8 +1334,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa4"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1359,8 +1359,8 @@
                         android:id="@+id/text2a5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta5"
                         android:layout_alignStart="@+id/texta5"
+                        android:layout_below="@+id/texta5"
                         android:text="8 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1374,10 +1374,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_5"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1392,8 +1392,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa5"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1417,8 +1417,8 @@
                         android:id="@+id/text2a6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta6"
                         android:layout_alignStart="@+id/texta6"
+                        android:layout_below="@+id/texta6"
                         android:text="15 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1432,10 +1432,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_6"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1450,8 +1450,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa6"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1475,8 +1475,8 @@
                         android:id="@+id/text2a7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta7"
                         android:layout_alignStart="@+id/texta7"
+                        android:layout_below="@+id/texta7"
                         android:text="15 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1490,10 +1490,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_7"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1509,8 +1509,8 @@
                 android:layout_height="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa7"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1534,8 +1534,8 @@
                         android:id="@+id/text2a8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta8"
                         android:layout_alignStart="@+id/texta8"
+                        android:layout_below="@+id/texta8"
                         android:text="15 Reps"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1549,10 +1549,10 @@
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_8"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1567,8 +1567,8 @@
                 android:layout_height="119dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cardViewa8"
-                android:visibility="gone"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1592,8 +1592,8 @@
                         android:id="@+id/text2a9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/texta9"
                         android:layout_alignStart="@+id/texta9"
+                        android:layout_below="@+id/texta9"
                         android:text="1 Minute"
                         android:textColor="@color/tc3"
                         android:textSize="16dp" />
@@ -1601,17 +1601,17 @@
                     <View
                         android:layout_width="3dp"
                         android:layout_height="60dp"
-                        android:layout_marginStart="35dp"
                         android:layout_alignParentTop="true"
+                        android:layout_marginStart="35dp"
                         android:background="@color/bc5" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="36dip"
                         android:layout_height="36dip"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="18dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:src="@drawable/ic_9"
                         android:visibility="visible"
                         design:cb_color="@color/circlecolor" />
@@ -1729,8 +1729,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/historyc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -1775,8 +1775,8 @@
                                 android:id="@+id/h1istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h1istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -1847,8 +1847,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/h1istoryc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -1893,8 +1893,8 @@
                                 android:id="@+id/h2istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h2istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -1943,8 +1943,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/h2istoryc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -1989,8 +1989,8 @@
                                 android:id="@+id/h3istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h3istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -2039,8 +2039,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/h3istoryc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -2085,8 +2085,8 @@
                                 android:id="@+id/h4istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h4istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -2157,8 +2157,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/h4istoryc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -2203,8 +2203,8 @@
                                 android:id="@+id/h5istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h5istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -2275,8 +2275,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@+id/h5istoryc1"
-                        android:visibility="gone"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -2321,8 +2321,8 @@
                                 android:id="@+id/h6istoryt5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@+id/h6istoryt4"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="20dp"
                                 android:text="lbs"
                                 android:textColor="@color/tc3"
@@ -2424,9 +2424,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="20dp"
+                                    android:gravity="center"
                                     android:text="Today is Push A"
                                     android:textColor="@color/tc2"
-                                    android:gravity="center"
                                     android:textSize="18dp" />
 
 
@@ -2458,9 +2458,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="20dp"
+                                    android:gravity="center"
                                     android:text="Tomorrow is Push B"
                                     android:textColor="@color/tc2"
-                                    android:gravity="center"
                                     android:textSize="18dp" />
 
 
@@ -2499,9 +2499,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="20dp"
+                                android:gravity="center"
                                 android:text="Your next rest day is never"
                                 android:textColor="@color/tc2"
-                                android:gravity="center"
                                 android:textSize="18dp" />
 
 
@@ -2579,11 +2579,11 @@
                     <android.support.v7.widget.CardView
                         android:id="@+id/weightcrd"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="160dp"
+                        android:layout_below="@+id/cardView11"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_height="160dp"
-                        android:layout_below="@+id/cardView11">
+                        android:layout_marginTop="8dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -2595,18 +2595,18 @@
                                 android:id="@+id/weightbr"
                                 android:layout_width="250dp"
                                 android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
+                                android:layout_below="@+id/dweight"
                                 android:layout_centerHorizontal="true"
-                                android:layout_below="@+id/dweight"/>
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp" />
 
                             <TextView
+                                android:id="@+id/dweight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="What's your desired weight?"
                                 android:layout_centerHorizontal="true"
-                                android:id="@+id/dweight"
                                 android:layout_marginTop="10dp"
+                                android:text="What's your desired weight?"
                                 android:textColor="#fff"
                                 android:textSize="16dp" />
 
@@ -2614,45 +2614,45 @@
                                 android:id="@+id/wht"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="150lbs"
-                                android:layout_centerHorizontal="true"
                                 android:layout_below="@id/weightbr"
+                                android:layout_centerHorizontal="true"
+                                android:text="150lbs"
                                 android:textColor="#fff"
                                 android:textSize="18dp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:paddingTop="1dp"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentStart="true"
                                 android:background="#000"
-                                android:orientation="horizontal"
                                 android:gravity="center_horizontal"
+                                android:orientation="horizontal"
+                                android:paddingTop="1dp"
                                 android:weightSum="2">
                                 <Button
+                                    android:id="@+id/wnnow"
                                     android:layout_width="0dp"
                                     android:layout_height="40dp"
-                                    android:text="Remind me later"
-                                    android:id="@+id/wnnow"
-                                    android:textColor="#ddd"
                                     android:layout_alignParentBottom="true"
-                                    android:layout_weight="1"
                                     android:layout_alignParentStart="true"
+                                    android:layout_weight="1"
                                     android:background="#aaa"
+                                    android:text="Remind me later"
+                                    android:textColor="#ddd"
                                     />
 
 
                                 <Button
+                                    android:id="@+id/wsave"
                                     android:layout_width="0dp"
                                     android:layout_height="40dp"
-                                    android:text="Save"
-                                    android:id="@+id/wsave"
-                                    android:textColor="#ddd"
-                                    android:layout_weight="1"
                                     android:layout_alignParentBottom="true"
                                     android:layout_alignParentEnd="true"
+                                    android:layout_weight="1"
                                     android:background="#aaa"
+                                    android:text="Save"
+                                    android:textColor="#ddd"
                                     />
 
                             </LinearLayout>
@@ -2665,11 +2665,11 @@
                         android:id="@+id/rating"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/weightcrd"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:visibility="gone"
-                        android:layout_below="@+id/weightcrd">
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -2681,46 +2681,46 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginTop="45dp"
                                 android:text="Enjoying Push Pull Legs?"
                                 android:textAlignment="center"
-                                android:layout_marginTop="45dp"
                                 android:textColor="@color/tc2"
                                 android:textSize="18dp" />
 
                             <LinearLayout
+                                android:id="@+id/ratelin"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:id="@+id/ratelin"
-                                android:paddingTop="1dp"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentStart="true"
                                 android:background="#000"
-                                android:orientation="horizontal"
                                 android:gravity="center_horizontal"
+                                android:orientation="horizontal"
+                                android:paddingTop="1dp"
                                 android:weightSum="2">
 
                                 <Button
+                                    android:id="@+id/notnow"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
-                                    android:text="Not Really"
-                                    android:id="@+id/notnow"
-                                    android:textColor="#aaa"
-                                    android:layout_weight="1"
                                     android:layout_alignParentBottom="true"
                                     android:layout_alignParentEnd="true"
+                                    android:layout_weight="1"
                                     android:background="#ccc"
+                                    android:text="Not Really"
+                                    android:textColor="#aaa"
                                     />
 
                                 <Button
+                                    android:id="@+id/ratebutton"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
-                                    android:text="Yes!"
-                                    android:id="@+id/ratebutton"
-                                    android:textColor="#eee"
-                                    android:layout_weight="1"
                                     android:layout_alignParentBottom="true"
                                     android:layout_alignParentEnd="true"
+                                    android:layout_weight="1"
                                     android:background="#ccc"
+                                    android:text="Yes!"
+                                    android:textColor="#eee"
                                     />
 
                             </LinearLayout>
@@ -2989,11 +2989,11 @@
         </GridLayout>
     </ScrollView>
     <ScrollView
+        android:id="@+id/ScrollView03"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="46dp"
         android:background="@color/tc1"
-        android:id="@+id/ScrollView03"
         android:scrollbars="none"
         android:visibility="invisible">
 
@@ -3019,19 +3019,19 @@
                         android:id="@+id/imgProfilePic"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginTop="55dp"
-                        android:layout_marginLeft="30dp"/>
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="55dp" />
 
 
                     <TextView
                         android:id="@+id/profile1"
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:layout_toRightOf="@+id/imgProfilePic"
                         android:layout_alignTop="@+id/imgProfilePic"
-                        android:text="Name"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/imgProfilePic"
+                        android:text="Name"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
 
@@ -3039,20 +3039,20 @@
                         android:id="@+id/editprof"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="Edit Profile"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="12dp"
                         android:layout_below="@+id/profile1"
-                        android:layout_toRightOf="@+id/imgProfilePic"/>
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/imgProfilePic"
+                        android:text="Edit Profile" />
 
                     <Button
                         android:id="@+id/logout"
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
-                        android:visibility="invisible"
+                        android:layout_alignTop="@+id/editprof"
                         android:layout_toRightOf="@+id/editprof"
-                        android:layout_alignTop="@+id/editprof"/>
+                        android:text="Logout"
+                        android:visibility="invisible" />
 
 
                 </RelativeLayout>
@@ -3062,9 +3062,9 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/weightcard"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="160dp"
-                android:layout_below="@+id/ppcard">
+                android:layout_below="@+id/ppcard"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -3075,9 +3075,9 @@
                         android:id="@+id/weighttitle"
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:text="Weight"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
+                        android:text="Weight"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
 
@@ -3085,31 +3085,31 @@
                         android:id="@+id/weightbar"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:layout_gravity="center"
+                        android:layout_above="@+id/startw"
                         android:layout_centerHorizontal="true"
-                        android:layout_above="@+id/startw"/>
+                        android:layout_gravity="center" />
 
                     <TextView
                         android:id="@+id/startw"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/btmlin"
+                        android:layout_alignLeft="@+id/weightbar"
+                        android:gravity="center"
+                        android:paddingBottom="5dp"
                         android:text="Start 150lbs"
                         android:textColor="@color/tc2"
-                        android:paddingBottom="5dp"
-                        android:textSize="12dp"
-                        android:gravity="center"
-                        android:layout_above="@+id/btmlin"
-                        android:layout_alignLeft="@+id/weightbar"/>
+                        android:textSize="12dp" />
 
                     <TextView
                         android:id="@+id/currw"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:text="Current 160lbs"
-                        android:gravity="center"
                         android:layout_above="@+id/btmlin"
-                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:paddingBottom="5dp"
+                        android:text="Current 160lbs"
                         android:textColor="@color/tc2"
                         android:textSize="12dp" />
 
@@ -3117,37 +3117,37 @@
                         android:id="@+id/desw"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:text="Desired 180lbs"
+                        android:layout_above="@+id/btmlin"
                         android:layout_alignEnd="@id/weightbar"
-                        android:textColor="@color/tc2"
-                        android:textSize="12dp"
+                        android:layout_alignRight="@+id/weightbar"
                         android:gravity="center"
                         android:paddingBottom="5dp"
-                        android:layout_above="@+id/btmlin"
-                        android:layout_alignRight="@+id/weightbar" />
+                        android:text="Desired 180lbs"
+                        android:textColor="@color/tc2"
+                        android:textSize="12dp" />
 
 
                     <LinearLayout
+                        android:id="@+id/btmlin"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:id="@+id/btmlin"
-                        android:paddingTop="1dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:background="#000"
-                        android:orientation="horizontal"
                         android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:paddingTop="1dp"
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/wupdate"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:text="Update Weight"
-                            android:id="@+id/wupdate"
-                            android:textColor="#aaa"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:background="#ccc"
+                            android:text="Update Weight"
+                            android:textColor="#aaa"
                             />
 
                     </LinearLayout>
@@ -3173,9 +3173,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
-                        android:weightSum="3"
-                        android:layout_weight="1">
+                        android:weightSum="3">
 
                         <android.support.v7.widget.CardView
                             android:id="@+id/wpcard"
@@ -3188,18 +3188,18 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
+                                    android:id="@+id/wpic"
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
-                                    android:id="@+id/wpic"
-                                    android:layout_marginTop="10dp"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
                                     android:src="@drawable/w"/>
                                 <TextView
+                                    android:id="@+id/wtext"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/wpic"
                                     android:layout_centerHorizontal="true"
-                                    android:id="@+id/wtext"
                                     android:layout_marginTop="10dp"
                                     android:text="Weight"
                                     android:textColor="@color/tc2" />
@@ -3221,18 +3221,18 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
+                                    android:id="@+id/bmipic"
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
-                                    android:id="@+id/bmipic"
-                                    android:layout_marginTop="10dp"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
                                     android:src="@drawable/b"/>
                                 <TextView
+                                    android:id="@+id/btext"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/bmipic"
                                     android:layout_centerHorizontal="true"
-                                    android:id="@+id/btext"
                                     android:layout_marginTop="10dp"
                                     android:text="BMI"
                                     android:textColor="@color/tc2" />
@@ -3253,17 +3253,17 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
+                                    android:id="@+id/hpic"
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
-                                    android:id="@+id/hpic"
-                                    android:layout_marginTop="10dp"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
                                     android:src="@drawable/h"/>
                                 <TextView
+                                    android:id="@+id/htext"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/hpic"
-                                    android:id="@+id/htext"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="10dp"
                                     android:text="Height"
@@ -3276,17 +3276,17 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="2"
                         android:orientation="horizontal"
                         android:visibility="visible"
-                        android:weightSum="3"
-                        android:layout_weight="2">
+                        android:weightSum="3">
 
                         <android.support.v7.widget.CardView
                             android:id="@+id/summmary"
                             android:layout_width="match_parent"
-                            android:visibility="gone"
                             android:layout_height="230dp"
-                            android:layout_below="@+id/weightcard">
+                            android:layout_below="@+id/weightcard"
+                            android:visibility="gone">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -3297,20 +3297,20 @@
                                     android:id="@+id/sum"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Stand Up Straight"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="10dp"
+                                    android:text="Stand Up Straight"
                                     android:textColor="@color/bc3"
                                     android:textSize="18dp" />
 
                                 <ImageView
+                                    android:id="@+id/hspic"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/hspic"
                                     android:layout_below="@+id/sum"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:src="@drawable/heightprogress"/>
                             </RelativeLayout>
 
@@ -3320,22 +3320,22 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@color/bc4"
                         android:orientation="horizontal"
                         android:visibility="visible"
-                        android:weightSum="3"
-                        android:layout_weight="2"
-                        android:background="@color/bc4">
+                        android:weightSum="3">
 
                         <android.support.v7.widget.CardView
+                            android:id="@+id/pscard"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
-                            android:id="@+id/pscard"
                             android:layout_weight="1">
 
                             <RelativeLayout
+                                android:id="@+id/relpush"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:id="@+id/relpush"
                                 android:background="@color/bc3">
 
                                 <View
@@ -3343,11 +3343,11 @@
                                     android:layout_height="1dp"
                                     android:background="@color/bc5" />
                                 <TextView
+                                    android:id="@+id/wtex1t"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:id="@+id/wtex1t"
+                                    android:layout_centerVertical="true"
                                     android:text="Push - A "
                                     android:textColor="@color/tc2" />
 
@@ -3356,15 +3356,15 @@
                         </android.support.v7.widget.CardView>
 
                         <android.support.v7.widget.CardView
+                            android:id="@+id/plcard"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
-                            android:id="@+id/plcard"
                             android:layout_weight="1">
 
                             <RelativeLayout
+                                android:id="@+id/relpull"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:id="@+id/relpull"
                                 android:background="@color/bc4">
 
                                 <View
@@ -3372,11 +3372,11 @@
                                     android:layout_height="1dp"
                                     android:background="@color/bc5" />
                                 <TextView
+                                    android:id="@+id/b1text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:id="@+id/b1text"
+                                    android:layout_centerVertical="true"
                                     android:text="Pull - A"
                                     android:textColor="@color/tc2" />
 
@@ -3385,15 +3385,15 @@
                         </android.support.v7.widget.CardView>
 
                         <android.support.v7.widget.CardView
+                            android:id="@+id/lcard"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
-                            android:id="@+id/lcard"
                             android:layout_weight="1">
 
                             <RelativeLayout
+                                android:id="@+id/relleg"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:id="@+id/relleg"
                                 android:background="@color/bc4">
 
                                 <View
@@ -3401,9 +3401,9 @@
                                     android:layout_height="1dp"
                                     android:background="@color/bc5" />
                                 <TextView
+                                    android:id="@+id/ht1ext"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/ht1ext"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:text="Legs - A"
@@ -3422,8 +3422,8 @@
                 android:id="@+id/weightcrd2"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:visibility="gone"
-                android:layout_below="@+id/ppcard">
+                android:layout_below="@+id/ppcard"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -3435,18 +3435,18 @@
                         android:id="@+id/weightbr2"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/dweight2"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/dweight2"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/dweight2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="What's your desired weight?"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/dweight2"
                         android:layout_marginTop="10dp"
+                        android:text="What's your desired weight?"
                         android:textColor="#fff"
                         android:textSize="16dp" />
 
@@ -3454,31 +3454,31 @@
                         android:id="@+id/wht2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="150lbs"
-                        android:layout_centerHorizontal="true"
                         android:layout_below="@id/weightbr2"
+                        android:layout_centerHorizontal="true"
+                        android:text="150lbs"
                         android:textColor="#fff"
                         android:textSize="18dp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:paddingTop="1dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:background="#000"
-                        android:orientation="horizontal"
                         android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:paddingTop="1dp"
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/wsave2"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:text="Save"
-                            android:id="@+id/wsave2"
-                            android:textColor="#ddd"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:background="#aaa"
+                            android:text="Save"
+                            android:textColor="#ddd"
                             />
 
                     </LinearLayout>
@@ -3488,22 +3488,22 @@
 
 
             <com.jjoe64.graphview.GraphView
+                android:id="@+id/pushgraph"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/pushgraph"
-                android:visibility="gone"
-                android:layout_below="@+id/weightcrd2"/>
+                android:layout_below="@+id/weightcrd2"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/graphtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bench Press"
                 android:layout_below="@+id/pushgraph"
-                android:layout_marginLeft="20dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Bench Press"
                 android:textColor="@color/bc4"
                 android:textSize="14dp" />
 
