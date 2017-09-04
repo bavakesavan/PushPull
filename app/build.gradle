@@ -4,9 +4,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'fragmentkeystore'
-            keyPassword 'macLAB1996'
+            keyPassword 'pushPULL1996'
             storeFile file('C:/Users/kesav/Desktop/fragment/fragment.jks')
-            storePassword 'macLAB1996'
+            storePassword 'pushPULL1996'
         }
     }
     compileSdkVersion 25
