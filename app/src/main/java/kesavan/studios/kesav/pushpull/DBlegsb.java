@@ -77,6 +77,7 @@ public class DBlegsb extends SQLiteOpenHelper {
         int firstname = cursor.getInt(workout);
         cursor.close();
         db.close();
+        //TEST
 
         return firstname;
     }
