@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">PushPull</string>
+    <string name="inicio">Inicio</string>
+    <string name="home">Home</string>
+    <string name="calender">Calender</string>
+    <string name="more">More</string>
+    <string name="Settings">Your Stats</string>
+    <string name="discover">Discover</string>
+    <string name="history">History</string>
+    <string name="pref_previously_started">false</string>
+    <integer name="swing_anim_time">500</integer>
+    <integer name="swing_anim_timeup">600</integer>
+    <color name="bc0">#ffffff</color>
+    <color name="bc1">#ffffff</color>
+    <color name="bottom">#eeeeee</color>
+    <color name="bc2">#ffffff</color>
+    <color name="bc3">#efefef</color>
+    <color name="bc4">#ffffff</color>
+    <color name="bc5">#555555</color>
+    <color name="tc1">#757575</color>
+    <color name="tc2">#757575</color>
+    <color name="tc3">#757575</color>
+    <color name="tc4">#757575</color>
+    <color name="tc5">#757575</color>
+    <color name="tc6">#757575</color>
+    <color name="sec">#af3067</color>
+    <color name="circlecolor">#af3067</color>
+</resources>
