@@ -47,6 +47,7 @@ public class DBlegsb extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //Testing commit
     public void update(int pushaw1, int pushaw2, int pushaw3, int pushaw4, int pushaw5, int pushaw6, String pushaw7) {
         SQLiteDatabase db = this.getWritableDatabase();
 
