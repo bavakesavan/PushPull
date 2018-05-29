@@ -2,8 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/haiti"
+    android:backgroundTintMode="multiply"
+    android:background="@drawable/background2"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/originIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="144dp"
+        app:srcCompat="@mipmap/ic4" />
 
     <Button
         android:id="@+id/next"
@@ -28,116 +40,185 @@
         android:background="@drawable/back"/>
 
     <RelativeLayout
+        android:id="@+id/relative1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/sec"
-        android:id="@+id/relative1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:backgroundTint="@color/haiti"
+        android:backgroundTintMode="multiply"
+        android:background="@drawable/background2"
         android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/save"
-        android:layout_width="226dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/googleimage"
-        android:layout_marginBottom="60dp"/>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:name="MyOtherActivity"
+            android:id="@+id/splashlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/usr"
-        android:layout_width="260dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:visibility="invisible"
-        android:inputType="textPersonName"
-        android:text="Username" />
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:name="MyOtherActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:label="@string/app_name"
+                android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/psh"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="120dp"
-        android:ems="10"
-        android:visibility="invisible"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/usr"
-        android:text="Password" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="150dp"
-            android:layout_height="250dp"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/intro" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="55dp"
+                    app:srcCompat="@mipmap/ic4" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:name="MyOtherActivity"
+            android:id="@+id/splashlayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:name="MyOtherActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:label="@string/app_name"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/save"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="172dp"
+                    android:text="Push Pull Legs"
+                    android:textColor="@color/bc0"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="140dp"
+                    android:background="@drawable/google"
+                    android:scaleType="fitCenter" />
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:background="@drawable/facebook"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text=""
+                    android:layout_marginBottom="90dp"
+                    android:visibility="invisible"
+                    style="@style/FacebookLoginButton" />
+
+                <Button
+                    android:id="@+id/login_button1"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="90dp"
+                    android:background="@drawable/facebook"
+                    android:elevation="0dp"
+                    android:scaleType="center" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <EditText
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/age"
-        android:layout_below="@+id/age"
-        android:layout_marginTop="10dp"
-        android:visibility="invisible"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Weight" />
+            android:id="@+id/usr"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Username"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/psh"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/usr"
+            android:layout_below="@+id/usr"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Password"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/age"
+            android:layout_below="@+id/age"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Weight"
+            android:visibility="invisible" />
 
 
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/psh"
-        android:layout_below="@+id/psh"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:visibility="invisible"
-        android:text="Age" />
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/psh"
+            android:layout_below="@+id/psh"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Age"
+            android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="97dp"
-        android:text="Push Pull Legs"
-        android:textColor="#e3f1f2"
-        android:textSize="35dp" />
+        <EditText
+            android:id="@+id/rdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/height"
+            android:layout_below="@+id/height"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Routine start day"
+            android:visibility="invisible" />
 
-    <EditText
-        android:id="@+id/rdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/height"
-        android:layout_below="@+id/height"
-        android:layout_marginTop="10dp"
-        android:visibility="invisible"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Routine start day" />
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/weight"
+            android:layout_below="@+id/weight"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Height"
+            android:visibility="invisible" />
 
-    <EditText
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/weight"
-        android:layout_below="@+id/weight"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:visibility="invisible"
-        android:inputType="textPersonName"
-        android:text="Height" />
-
-</RelativeLayout>
+    </RelativeLayout>
     <RelativeLayout
         android:orientation="vertical"
         android:background="@color/sec"

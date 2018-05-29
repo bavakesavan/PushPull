@@ -1,28 +1,17 @@
 package kesavan.studios.kesav.pushpull;
 
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -30,55 +19,54 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import at.markushi.ui.CircleButton;
 
 public class MainA extends AppCompatActivity {
 
+    FirebaseAuth mAuth;
+
     public int count[] = new int[26];
     public String[][] excer = new String[5][4];
 
-    public int today = 0, page = 1, start = 0, splash = 0, dbb = 0, dbbb = 0, abs = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0, s6 = 0, new_workout = 0, dayselect = 0, dayselected = 0, profile = 0, goal1 = 0, countera, rate = 9, pg1=1, pg2=0, pg3=0, bcount = 0, hcount =0;
+    public int today = 0, page = 1, start = 0, splash = 0, dbb = 0, dbbb = 0, abs = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0, s6 = 0, new_workout = 0, dayselect = 0, dayselected = 0, profile = 0, goal1 = 0, countera, rate = 9, pg1 = 1, pg2 = 0, pg3 = 0, bcount = 0, hcount = 0;
     public Calendar c = Calendar.getInstance();
     public SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-    public String uom = "lbs", month, year, date;
+    public String uom = " lbs", month, year, date;
 
-    public String[][] Rest = new String[][] {{"REST",uom,"REST"},{"REST",uom,"REST"},{"REST",uom,"REST"},{"REST",uom,"REST"},{"REST",uom,"REST"},{"REST",uom,"REST"}};
-    public String[][] Pusha = new String[][] {{"Bench Press",uom,"Rest time: 90-120 sec"},{"Neck Press",uom,"Rest time: 60 sec"},{"Tricep Dips",uom,"Rest time: 60 sec"},{"Cable Crossovers",uom,"Rest time: 30 sec"},{"Tricep Extensions",uom,"Rest time: 30 sec"},{"Lateral Raises",uom,"Rest time: 15 sec"}};
-    public String[][] Pulla = new String[][] {{"Deadlift",uom,"Rest time: 90-120 sec"},{"Chin-ups",uom,"Rest time: 60 sec"},{"Rows",uom,"Rest time: 60 sec"},{"Shrugs",uom,"Rest time: 30 sec"},{"Barbell Curls",uom,"Rest time: 30 sec"},{"Reverse Cable Fly",uom,"Rest time: 15 sec"}};
-    public String[][] Legsa = new String[][] {{"Back Squat",uom,"Rest time: 90-120 sec"},{"Good Mornings",uom,"Rest time: 60 sec"},{"Leg Press",uom,"Rest time: 60 sec"},{"Reverse Hyperextension",uom,"Rest time: 30 sec"},{"Leg Curl",uom,"Rest time: 30 sec"},{"Calf Raises",uom,"Rest time: 15 sec"}};
-    public String[][] Pushb = new String[][] {{"Overhead Press",uom,"Rest time: 90-120 sec"},{"Incline Bench Press",uom,"Rest time: 60 sec"},{"Close Grip Bench Press",uom,"Rest time: 60 sec"},{"Seated Machine Fly",uom,"Rest time: 30 sec"},{"Tricep Pushdown",uom,"Rest time: 30 sec"},{"Cable Lateral Raises",uom,"Rest time: 15 sec"}};
-    public String[][] Pullb = new String[][] {{"Snatch Grip Deadlift",uom,"Rest time: 90-120 sec"},{"Barbell Rows",uom,"Rest time: 60 sec"},{"Pull-ups",uom,"Rest time: 60 sec"},{"1-arm Rows",uom,"Rest time: 30 sec"},{"Incline Dumbbell Curl",uom,"Rest time: 30 sec"},{"Machine Revese Fly",uom,"Rest time: 15 sec"}};
-    public String[][] Legsb = new String[][] {{"Front Squat",uom,"Rest time: 90-120 sec"},{"Romanian Deadlifts",uom,"Rest time: 60 sec"},{"Barbell Hip Thrusts",uom,"Rest time: 60 sec"},{"Dubbell Lunges",uom,"Rest time: 30 sec"},{"Leg Extensions",uom,"Rest time: 30 sec"},{"Leg Raises",uom,"Rest time: 15 sec"}};
+    public String[][] Rest = new String[][]{{"REST", uom, "REST"}, {"REST", uom, "REST"}, {"REST", uom, "REST"}, {"REST", uom, "REST"}, {"REST", uom, "REST"}, {"REST", uom, "REST"}};
+    public String[][] Pusha = new String[][]{{"Bench Press", uom, "90"}, {"Neck Press", uom, "60"}, {"Tricep Dips", uom, "60"}, {"Cable Crossovers", uom, "30"}, {"Tricep Extensions", uom, "30"}, {"Lateral Raises", uom, "15"}};
+    public String[][] Pulla = new String[][]{{"Deadlift", uom, "90"}, {"Chin-ups", uom, "60"}, {"Rows", uom, "60"}, {"Shrugs", uom, "30"}, {"Barbell Curls", uom, "30"}, {"Reverse Cable Fly", uom, "15"}};
+    public String[][] Legsa = new String[][]{{"Back Squat", uom, "90"}, {"Good Mornings", uom, "60"}, {"Leg Press", uom, "60"}, {"Reverse Hyperextension", uom, "30"}, {"Leg Curl", uom, "30"}, {"Calf Raises", uom, "15"}};
+    public String[][] Pushb = new String[][]{{"Overhead Press", uom, "90"}, {"Incline Bench Press", uom, "60"}, {"Close Grip Bench Press", uom, "60"}, {"Seated Machine Fly", uom, "30"}, {"Tricep Pushdown", uom, "30"}, {"Cable Lateral Raises", uom, "15"}};
+    public String[][] Pullb = new String[][]{{"Snatch Grip Deadlift", uom, "90"}, {"Barbell Rows", uom, "60"}, {"Pull-ups", uom, "60"}, {"1-arm Rows", uom, "30"}, {"Incline Dumbbell Curl", uom, "30"}, {"Machine Revese Fly", uom, "15"}};
+    public String[][] Legsb = new String[][]{{"Front Squat", uom, "90"}, {"Romanian Deadlifts", uom, "60"}, {"Barbell Hip Thrusts", uom, "60"}, {"Dubbell Lunges", uom, "30"}, {"Leg Extensions", uom, "30"}, {"Leg Raises", uom, "15"}};
 
     CompactCalendarView compactCalendar;
 
     Button b1, b2, edit, logout, savew, cancelw, savew2, cancelw2, rb1, rb2;
 
-    private CardView c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, hc, hc1, hc2, hc3, hc4, hc5, hc6, a1, a2, a3, a4, a5, a6, a7, a8, a9, ratecard, pullbutton, pushbutton, legbutton, weightbutton, bmibutton, heightbutton, summary;
-    private CircleButton cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12, cb13, cb14, cb15, cb16, cb17, cb18, cb19, cb20, cb21, cb22, cb23, cb24, cb25, cb26;
-    private CircleButton hcb1, hcb2, hcb3, hcb4, hcb5, hcb6, hcb7, hcb8, hcb9, hcb10, hcb11, hcb12, hcb13, hcb14, hcb15, hcb16, hcb17, hcb18, hcb19, hcb20, hcb21, hcb22, hcb23, hcb24, hcb25, hcb26;
+    private CardView c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, hc, hc1, hc2, hc3, hc4, hc5, hc6, a1, a2, a3, a4, a5, a6, a7, a8, a9, ratecard, pullbutton, pushbutton, legbutton, weightbutton, bmibutton, heightbutton, summary;
+    private CircleButton card1b1, card1b2, card1b3, card1b4, card1b5, card2b1, card2b2, card2b3, card3b1, card3b2, card3b3, card4b1, card4b2, card4b3, card4b4, card4b5, card5b1, card5b2, card5b3, card5b4, card5b5, card6b1, card6b2, card6b3, card6b4, card6b5;
+    private CircleButton hcard1b1, hcard1b2, hcard1b3, hcard1b4, hcard1b5, hcard2b1, hcard2b2, hcard2b3, hcard3b1, hcard3b2, hcard3b3, hcard4b1, hcard4b2, hcard4b3, hcard4b4, hcard4b5, hcard5b1, hcard5b2, hcard5b3, hcard5b4, hcard5b5, hcard6b1, hcard6b2, hcard6b3, hcard6b4, hcard6b5;
 
     private TextView nwe, nwe2, ct1, ct2, ct3, ct4, ct5, ct6, ct7, ct8, ct9, ct10, ct11, ct12, ct13, ct14, ct15, ct16, ct17, ct18, ct19, ct20, ct21, ct22, ct23, ct24, ratetext, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, ct25, graphtext, todaytxt, np1, wd, pname, title, sweight, cweight, dweight, weight, height, bmi;
-    private TextView h1t1, h1t2, h1t3, h2t1, h2t2, h2t3, h3t1, h3t2, h3t3, h4t1, h4t2, h4t3, h5t1, h5t2, h5t3, h6t1, h6t2, h6t3,uom1,uom2,uom3,uom4,uom5,uom6;
+    private TextView h1t1, h1t2, h1t3, h2t1, h2t2, h2t3, h3t1, h3t2, h3t3, h4t1, h4t2, h4t3, h5t1, h5t2, h5t3, h6t1, h6t2, h6t3, uom1, uom2, uom3, uom4, uom5, uom6;
     public TextView tday, tmday, rmday, sumtext;
     private GraphView graph;
-    LineGraphSeries < DataPoint > series;
-    private ScrollView sc1, sc2, sc3;
+    LineGraphSeries<DataPoint> series;
     private ImageView picture1;
+    private ImageView icon2;
     private NumberPicker dpick;
     private SeekBar wbar, sbar, sbar2;
     private NumberPicker np;
@@ -101,8 +89,24 @@ public class MainA extends AppCompatActivity {
     private set5 dbs5;
     private set6 dbs6;
     private String dayselec = "Monday";
-    private RelativeLayout rel1,relpush, relpull, relleg;
+    private RelativeLayout rel1, relpush, relpull, relleg;
+    private LinearLayout icon;
+    Animation uptodown, downtoup, midtoupfade, fadeupto;
     private BottomNavigationView bottomNavigationView;
+
+    public RelativeLayout todayCard, pushACard, pushBCard, pullACard, pullBCard, legsACard, legsBCard, profileCard, absCard, settingCard, historyCard;
+    public ScrollView sc1, sc2, sc3;
+    public CardView ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, calenderCard;
+
+
+    private static final long START_TIME_IN_MILLIS = 900000;
+    private TextView mTextViewCountDown;
+    private RelativeLayout mButtonStartPause;
+    private CountDownTimer mCountDownTimer;
+    private boolean mTimerRunning;
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+
+    private static final String TAG = "GoogleActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,35 +115,267 @@ public class MainA extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         splash = 1;
 
+        count[0] = 3;
+        count[1] = 3;
+        count[2] = 3;
+        count[3] = 3;
+        count[4] = 3;
+        count[5] = 8;
+        count[6] = 8;
+        count[7] = 8;
+        count[8] = 8;
+        count[9] = 8;
+        count[10] = 8;
+        count[11] = 10;
+        count[12] = 10;
+        count[13] = 10;
+        count[14] = 10;
+        count[15] = 10;
+        count[16] = 10;
+        count[17] = 10;
+        count[18] = 10;
+        count[19] = 10;
+        count[20] = 10;
+        count[21] = 10;
+        count[22] = 10;
+        count[23] = 10;
+        count[24] = 10;
+        count[25] = 10;
+
+        //Initializing scrollview layouts
+        sc1 = findViewById(R.id.ScrollView01);
+        sc2 = findViewById(R.id.ScrollView02);
+        sc3 = findViewById(R.id.ScrollView03);
+
+        //Initializing Relative layout
+        todayCard = findViewById(R.id.todayCard);
+        pushACard = findViewById(R.id.pushAcard);
+        pushBCard = findViewById(R.id.pushBcard);
+        pullACard = findViewById(R.id.pullAcard);
+        pullBCard = findViewById(R.id.pullBcard);
+        legsACard = findViewById(R.id.legsAcard);
+        legsBCard = findViewById(R.id.legsBcard);
+        profileCard = findViewById(R.id.profileCard);
+        absCard = findViewById(R.id.abscard);
+        historyCard = findViewById(R.id.historycard);
+        settingCard = findViewById(R.id.settingsCard);
+
+        //Initializing workout cards
+        card1 = findViewById(R.id.card1);
+        card2 = findViewById(R.id.card2);
+        card3 = findViewById(R.id.card3);
+        card4 = findViewById(R.id.card4);
+        card5 = findViewById(R.id.card5);
+        card6 = findViewById(R.id.card6);
+        card7 = findViewById(R.id.cardView7);
+        card8 = findViewById(R.id.cardView8);
+        card9 = findViewById(R.id.cardView9);
+
+        card10 = findViewById(R.id.cardView10);
+        calenderCard = findViewById(R.id.cardView19);
+
+        //Initializing ab cards
+        ab1 = findViewById(R.id.cardViewa1);
+        ab2 = findViewById(R.id.cardViewa2);
+        ab3 = findViewById(R.id.cardViewa3);
+        ab4 = findViewById(R.id.cardViewa4);
+        ab5 = findViewById(R.id.cardViewa5);
+        ab6 = findViewById(R.id.cardViewa6);
+        ab7 = findViewById(R.id.cardViewa7);
+        ab8 = findViewById(R.id.cardViewa8);
+        ab9 = findViewById(R.id.cardViewa9);
+
+        //Initializing Circle Button
+        card1b1 = findViewById(R.id.card1b1);
+        card1b2 = findViewById(R.id.card1b2);
+        card1b3 = findViewById(R.id.card1b3);
+        card1b4 = findViewById(R.id.card1b4);
+        card1b5 = findViewById(R.id.card1b5);
+        card2b1 = findViewById(R.id.card2b1);
+        card2b2 = findViewById(R.id.card2b2);
+        card2b3 = findViewById(R.id.card2b3);
+        card3b1 = findViewById(R.id.card3b1);
+        card3b2 = findViewById(R.id.card3b2);
+        card3b3 = findViewById(R.id.card3b3);
+        card4b1 = findViewById(R.id.card4b1);
+        card4b2 = findViewById(R.id.card4b2);
+        card4b3 = findViewById(R.id.card4b3);
+        card4b4 = findViewById(R.id.card4b4);
+        card4b5 = findViewById(R.id.card4b5);
+        card5b1 = findViewById(R.id.card5b1);
+        card5b2 = findViewById(R.id.card5b2);
+        card5b3 = findViewById(R.id.card5b3);
+        card5b4 = findViewById(R.id.card5b4);
+        card5b5 = findViewById(R.id.card5b5);
+        card6b1 = findViewById(R.id.card6b1);
+        card6b2 = findViewById(R.id.card6b2);
+        card6b3 = findViewById(R.id.card6b3);
+        card6b4 = findViewById(R.id.card6b4);
+        card6b5 = findViewById(R.id.card6b5);
+
+        //Initializing Text Fields
+        ct1 = findViewById(R.id.card1MainTitle);
+        ct2 = findViewById(R.id.card1Weight);
+        ct3 = findViewById(R.id.card1WeightUnits);
+        ct4 = findViewById(R.id.card1Time);
+        ct5 = findViewById(R.id.card2MainTitle);
+        ct6 = findViewById(R.id.card2Weight);
+        ct7 = findViewById(R.id.card2WeightUnits);
+        ct8 = findViewById(R.id.card2Time);
+        ct9 = findViewById(R.id.card3MainTitle);
+        ct10 = findViewById(R.id.card3Weight);
+        ct11 = findViewById(R.id.card3WeightUnits);
+        ct12 = findViewById(R.id.card3Time);
+        ct13 = findViewById(R.id.card4MainTitle);
+        ct14 = findViewById(R.id.card4Weight);
+        ct15 = findViewById(R.id.card4WeightUnits);
+        ct16 = findViewById(R.id.card4Time);
+        ct17 = findViewById(R.id.card5MainTitle);
+        ct18 = findViewById(R.id.card5Weight);
+        ct19 = findViewById(R.id.card5WeightUnits);
+        ct20 = findViewById(R.id.card5Time);
+        ct21 = findViewById(R.id.card6MainTitle);
+        ct22 = findViewById(R.id.card6Weight);
+        ct23 = findViewById(R.id.card6WeightUnits);
+        ct24 = findViewById(R.id.card6Time);
+
+        todayCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+            }
+        });
+
+        pushACard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Pusha;
+                updatecards();
+            }
+        });
+
+        pushBCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Pushb;
+                updatecards();
+            }
+        });
+
+        pullACard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Pulla;
+                updatecards();
+            }
+        });
+
+        pullBCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Pullb;
+                updatecards();
+            }
+        });
+
+        legsACard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Legsa;
+                updatecards();
+            }
+        });
+
+        legsBCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.INVISIBLE);
+                sc1.setVisibility(View.VISIBLE);
+                todayCard.setVisibility(View.GONE);
+                excer = Legsb;
+                updatecards();
+            }
+        });
+
+        profileCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.GONE);
+                todayCard.setVisibility(View.GONE);
+                sc3.setVisibility(View.VISIBLE);
+            }
+        });
+
+        absCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.GONE);
+                todayCard.setVisibility(View.GONE);
+                sc1.setVisibility(View.VISIBLE);
+                card1.setVisibility(View.GONE);
+                card2.setVisibility(View.GONE);
+                card3.setVisibility(View.GONE);
+                card4.setVisibility(View.GONE);
+                card5.setVisibility(View.GONE);
+                card6.setVisibility(View.GONE);
+                ab1.setVisibility(View.VISIBLE);
+                ab2.setVisibility(View.VISIBLE);
+                ab3.setVisibility(View.VISIBLE);
+                ab4.setVisibility(View.VISIBLE);
+                ab5.setVisibility(View.VISIBLE);
+                ab6.setVisibility(View.VISIBLE);
+                ab7.setVisibility(View.VISIBLE);
+                ab8.setVisibility(View.VISIBLE);
+                ab9.setVisibility(View.VISIBLE);
+            }
+        });
+
+        historyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sc2.setVisibility(View.GONE);
+                todayCard.setVisibility(View.GONE);
+                sc1.setVisibility(View.VISIBLE);
+                card1.setVisibility(View.GONE);
+                card2.setVisibility(View.GONE);
+                card3.setVisibility(View.GONE);
+                card4.setVisibility(View.GONE);
+                card5.setVisibility(View.GONE);
+                card6.setVisibility(View.GONE);
+                card7.setVisibility(View.VISIBLE);
+                card8.setVisibility(View.VISIBLE);
+                card9.setVisibility(View.VISIBLE);
+                card10.setVisibility(View.VISIBLE);
+                calenderCard.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
+
+/*
+
         //String formattedDate = df.format(c.getTime()); // to get time
         final String days[];
         days = new String[] {"Mon","Tue","Wed","Thu","Fri","Sat","Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-        count[0] = 4;
-        count[1] = 4;
-        count[2] = 4;
-        count[3] = 4;
-        count[4] = 4;
-        count[5] = 9;
-        count[6] = 9;
-        count[7] = 9;
-        count[8] = 9;
-        count[9] = 9;
-        count[10] = 9;
-        count[11] = 11;
-        count[12] = 11;
-        count[13] = 11;
-        count[14] = 11;
-        count[15] = 11;
-        count[16] = 11;
-        count[17] = 11;
-        count[18] = 11;
-        count[19] = 11;
-        count[20] = 11;
-        count[21] = 11;
-        count[22] = 11;
-        count[23] = 11;
-        count[24] = 11;
-        count[25] = 11;
+
 
         //Creating DB classes4
         db = new DBmain(this);
@@ -161,7 +397,6 @@ public class MainA extends AppCompatActivity {
         dayselected = Integer.parseInt(db.getday());
         uom = db.getuom()+"";
 
-        Context context = getApplicationContext();
 
         if (dayselected == 0) {
             dayselec = "Monday";
@@ -288,12 +523,6 @@ public class MainA extends AppCompatActivity {
         sc3 = (ScrollView) findViewById(R.id.ScrollView03);
 
         //Initializing Cards
-        c1 = (CardView) findViewById(R.id.cardView);
-        c2 = (CardView) findViewById(R.id.cardView2);
-        c3 = (CardView) findViewById(R.id.cardView3);
-        c4 = (CardView) findViewById(R.id.cardView4);
-        c5 = (CardView) findViewById(R.id.cardView5);
-        c6 = (CardView) findViewById(R.id.cardView6);
         c7 = (CardView) findViewById(R.id.cardView7);
         c8 = (CardView) findViewById(R.id.cardView8);
         c9 = (CardView) findViewById(R.id.cardView9);
@@ -314,15 +543,6 @@ public class MainA extends AppCompatActivity {
         c24 = (CardView) findViewById(R.id.weightcard);
         c25 = (CardView) findViewById(R.id.ppcard);
         c26 = (CardView) findViewById(R.id.pscard);
-        ab1 = (CardView) findViewById(R.id.cardViewa1);
-        ab2 = (CardView) findViewById(R.id.cardViewa2);
-        ab3 = (CardView) findViewById(R.id.cardViewa3);
-        ab4 = (CardView) findViewById(R.id.cardViewa4);
-        ab5 = (CardView) findViewById(R.id.cardViewa5);
-        ab6 = (CardView) findViewById(R.id.cardViewa6);
-        ab7 = (CardView) findViewById(R.id.cardViewa7);
-        ab8 = (CardView) findViewById(R.id.cardViewa8);
-        ab9 = (CardView) findViewById(R.id.cardViewa9);
         hc = (CardView) findViewById(R.id.historyc1);
         hc1 = (CardView) findViewById(R.id.h1istoryc1);
         hc2 = (CardView) findViewById(R.id.h2istoryc1);
@@ -353,60 +573,60 @@ public class MainA extends AppCompatActivity {
         relleg = (RelativeLayout) findViewById(R.id.relleg);
 
         //Initializing Circle Button
-        cb1 = (CircleButton) findViewById(R.id.cb1);
-        cb2 = (CircleButton) findViewById(R.id.cb2);
-        cb3 = (CircleButton) findViewById(R.id.cb3);
-        cb4 = (CircleButton) findViewById(R.id.cb4);
-        cb5 = (CircleButton) findViewById(R.id.cb5);
-        cb6 = (CircleButton) findViewById(R.id.cb21);
-        cb7 = (CircleButton) findViewById(R.id.cb22);
-        cb8 = (CircleButton) findViewById(R.id.cb23);
-        cb9 = (CircleButton) findViewById(R.id.cb31);
-        cb10 = (CircleButton) findViewById(R.id.cb32);
-        cb11 = (CircleButton) findViewById(R.id.cb33);
-        cb12 = (CircleButton) findViewById(R.id.cb41);
-        cb13 = (CircleButton) findViewById(R.id.cb42);
-        cb14 = (CircleButton) findViewById(R.id.cb43);
-        cb15 = (CircleButton) findViewById(R.id.cb44);
-        cb16 = (CircleButton) findViewById(R.id.cb45);
-        cb17 = (CircleButton) findViewById(R.id.cb51);
-        cb18 = (CircleButton) findViewById(R.id.cb52);
-        cb19 = (CircleButton) findViewById(R.id.cb53);
-        cb20 = (CircleButton) findViewById(R.id.cb54);
-        cb21 = (CircleButton) findViewById(R.id.cb55);
-        cb22 = (CircleButton) findViewById(R.id.cb61);
-        cb23 = (CircleButton) findViewById(R.id.cb62);
-        cb24 = (CircleButton) findViewById(R.id.cb63);
-        cb25 = (CircleButton) findViewById(R.id.cb64);
-        cb26 = (CircleButton) findViewById(R.id.cb65);
+        card1b1 = findViewById(R.id.card1b1);
+        card1b2 = findViewById(R.id.card1b2);
+        card1b3 = findViewById(R.id.card1b3);
+        card1b4 = findViewById(R.id.card1b4);
+        card1b5 = findViewById(R.id.card1b5);
+        card2b1 = findViewById(R.id.card5b5);
+        card2b2 = findViewById(R.id.card6b1);
+        card2b3 = findViewById(R.id.card6b2);
+        card3b1 = findViewById(R.id.card1b31);
+        card3b2 = findViewById(R.id.card1b32);
+        card3b3 = findViewById(R.id.card1b33);
+        card4b1 = findViewById(R.id.card1b41);
+        card4b2 = findViewById(R.id.card1b42);
+        card4b3 = findViewById(R.id.card1b43);
+        card4b4 = findViewById(R.id.card1b44);
+        card4b5 = findViewById(R.id.card1b45);
+        card5b1 = findViewById(R.id.card1b51);
+        card5b2 = findViewById(R.id.card1b52);
+        card5b3 = findViewById(R.id.card1b53);
+        card5b4 = findViewById(R.id.card1b54);
+        card5b5 = findViewById(R.id.card1b55);
+        card6b1 = findViewById(R.id.card2b11);
+        card6b2 = findViewById(R.id.card2b12);
+        card6b3 = findViewById(R.id.card2b13);
+        card6b4 = findViewById(R.id.card2b14);
+        card6b5 = findViewById(R.id.card2b15);
 
         //Initializing Circle Button
-        hcb1 = (CircleButton) findViewById(R.id.h1cb1);
-        hcb2 = (CircleButton) findViewById(R.id.h1cb2);
-        hcb3 = (CircleButton) findViewById(R.id.h1cb3);
-        hcb4 = (CircleButton) findViewById(R.id.h1cb4);
-        hcb5 = (CircleButton) findViewById(R.id.h1cb5);
-        hcb6 = (CircleButton) findViewById(R.id.h2cb1);
-        hcb7 = (CircleButton) findViewById(R.id.h2cb2);
-        hcb8 = (CircleButton) findViewById(R.id.h2cb3);
-        hcb9 = (CircleButton) findViewById(R.id.h3cb1);
-        hcb10 = (CircleButton) findViewById(R.id.h3cb2);
-        hcb11 = (CircleButton) findViewById(R.id.h3cb3);
-        hcb12 = (CircleButton) findViewById(R.id.h4cb1);
-        hcb13 = (CircleButton) findViewById(R.id.h4cb2);
-        hcb14 = (CircleButton) findViewById(R.id.h4cb3);
-        hcb15 = (CircleButton) findViewById(R.id.h4cb4);
-        hcb16 = (CircleButton) findViewById(R.id.h4cb5);
-        hcb17 = (CircleButton) findViewById(R.id.h5cb1);
-        hcb18 = (CircleButton) findViewById(R.id.h5cb2);
-        hcb19 = (CircleButton) findViewById(R.id.h5cb3);
-        hcb20 = (CircleButton) findViewById(R.id.h5cb4);
-        hcb21 = (CircleButton) findViewById(R.id.h5cb5);
-        hcb22 = (CircleButton) findViewById(R.id.h6cb1);
-        hcb23 = (CircleButton) findViewById(R.id.h6cb2);
-        hcb24 = (CircleButton) findViewById(R.id.h6cb3);
-        hcb25 = (CircleButton) findViewById(R.id.h6cb4);
-        hcb26 = (CircleButton) findViewById(R.id.h6cb5);
+        hcard1b1 = findViewById(R.id.h1card1b1);
+        hcard1b2 = findViewById(R.id.h1card1b2);
+        hcard1b3 = findViewById(R.id.h1card1b3);
+        hcard1b4 = findViewById(R.id.h1card1b4);
+        hcard1b5 = findViewById(R.id.h1card1b5);
+        hcard2b1 = findViewById(R.id.h2card1b1);
+        hcard2b2 = findViewById(R.id.h2card1b2);
+        hcard2b3 = findViewById(R.id.h2card1b3);
+        hcard3b1 = findViewById(R.id.h3card1b1);
+        hcard3b2 = findViewById(R.id.h3card1b2);
+        hcard3b3 = findViewById(R.id.h3card1b3);
+        hcard4b1 = findViewById(R.id.h4card1b1);
+        hcard4b2 = findViewById(R.id.h4card1b2);
+        hcard4b3 = findViewById(R.id.h4card1b3);
+        hcard4b4 = findViewById(R.id.h4card1b4);
+        hcard4b5 = findViewById(R.id.h4card1b5);
+        hcard5b1 = findViewById(R.id.h5card1b1);
+        hcard5b2 = findViewById(R.id.h5card1b2);
+        hcard5b3 = findViewById(R.id.h5card1b3);
+        hcard5b4 = findViewById(R.id.h5card1b4);
+        hcard5b5 = findViewById(R.id.h5card1b5);
+        hcard6b1 = findViewById(R.id.h6card1b1);
+        hcard6b2 = findViewById(R.id.h6card1b2);
+        hcard6b3 = findViewById(R.id.h6card1b3);
+        hcard6b4 = findViewById(R.id.h6card1b4);
+        hcard6b5 = findViewById(R.id.h6card1b5);
 
         //Initial History text
         h1t1 = (TextView) findViewById(R.id.h1istoryt1);
@@ -462,8 +682,8 @@ public class MainA extends AppCompatActivity {
         uom5.setText(uom);
         uom6 = (TextView) findViewById(R.id.h6istoryt5);
         uom6.setText(uom);
+    }
 
-        
         todaytxt.setText("Hi " + db.getname() + ",");
         nwe.setText(db.sweight() + uom);
         nwe2.setText(db.sweight() + uom);
@@ -488,16 +708,20 @@ public class MainA extends AppCompatActivity {
         } catch (Exception e) {
 
            Toast.makeText(context, "You need to setup your profile again to show your height and BMI", Toast.LENGTH_LONG).show();
-        }
 
 
         if (!db.geturl().equals("")) {
             ImageView pImage = (ImageView) findViewById(R.id.imgProfilePic);
-            Glide.with(this).load(db.geturl()).crossFade().override(100, 100).into(pImage);
+
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ab1);
+            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+            roundedBitmapDrawable.setCircular(true);
+            pImage.setImageDrawable(roundedBitmapDrawable);
+
+           // Glide.with(this).load(db.geturl()).crossFade().override(100, 100).into(pImage);
         }
         pname = (TextView) findViewById(R.id.profile1);
         pname.setText(db.getfullname());
-
         sbar.setProgress(50);
         sbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -995,7 +1219,7 @@ public class MainA extends AppCompatActivity {
 
             }
         });
-
+*/
         ab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1052,6 +1276,878 @@ public class MainA extends AppCompatActivity {
         });
 
 
+        //Circle button
+        card1b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[0] == 0) {
+                    count[0] = 3;
+                } else {
+                    count[0] = count[0] - 1;
+                }
+
+                if (count[0] == 3) {
+                    card1b1.setImageResource(R.drawable.ic_3);
+                } else if (count[0] == 2) {
+                    card1b1.setImageResource(R.drawable.ic_2);
+                } else if (count[0] == 1) {
+                    card1b1.setImageResource(R.drawable.ic_1);
+                } else if (count[0] == 0) {
+                    card1b1.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card1b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[1] == 0) {
+                    count[1] = 3;
+                } else {
+                    count[1] = count[1] - 1;
+                }
+
+                if (count[1] == 3) {
+                    card1b2.setImageResource(R.drawable.ic_3);
+                } else if (count[1] == 2) {
+                    card1b2.setImageResource(R.drawable.ic_2);
+                } else if (count[1] == 1) {
+                    card1b2.setImageResource(R.drawable.ic_1);
+                } else if (count[1] == 0) {
+                    card1b2.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card1b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[2] == 0) {
+                    count[2] = 3;
+                } else {
+                    count[2] = count[2] - 1;
+                }
+
+                if (count[2] == 3) {
+                    card1b3.setImageResource(R.drawable.ic_3);
+                } else if (count[2] == 2) {
+                    card1b3.setImageResource(R.drawable.ic_2);
+                } else if (count[2] == 1) {
+                    card1b3.setImageResource(R.drawable.ic_1);
+                } else if (count[2] == 0) {
+                    card1b3.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card1b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[3] == 0) {
+                    count[3] = 3;
+                } else {
+                    count[3] = count[3] - 1;
+                }
+
+                if (count[3] == 3) {
+                    card1b4.setImageResource(R.drawable.ic_3);
+                } else if (count[3] == 2) {
+                    card1b4.setImageResource(R.drawable.ic_2);
+                } else if (count[3] == 1) {
+                    card1b4.setImageResource(R.drawable.ic_1);
+                } else if (count[3] == 0) {
+                    card1b4.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card1b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[4] == 0) {
+                    count[4] = 3;
+                } else {
+                    count[4] = count[4] - 1;
+                }
+
+                if (count[4] == 3) {
+                    card1b5.setImageResource(R.drawable.ic_3);
+                } else if (count[4] == 2) {
+                    card1b5.setImageResource(R.drawable.ic_2);
+                } else if (count[4] == 1) {
+                    card1b5.setImageResource(R.drawable.ic_1);
+                } else if (count[4] == 0) {
+                    card1b5.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card2b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[5] == 0) {
+                    count[5] = 8;
+                } else {
+                    count[5] = count[5] - 1;
+                }
+
+                if (count[5] == 8) {
+                    card2b1.setImageResource(R.drawable.ic_8);
+                } else if (count[5] == 7) {
+                    card2b1.setImageResource(R.drawable.ic_7);
+                } else if (count[5] == 6) {
+                    card2b1.setImageResource(R.drawable.ic_6);
+                } else if (count[5] == 5) {
+                    card2b1.setImageResource(R.drawable.ic_5);
+                } else if (count[5] == 4) {
+                    card2b1.setImageResource(R.drawable.ic_4);
+                } else if (count[5] == 3) {
+                    card2b1.setImageResource(R.drawable.ic_3);
+                } else if (count[5] == 2) {
+                    card2b1.setImageResource(R.drawable.ic_2);
+                } else if (count[5] == 1) {
+                    card2b1.setImageResource(R.drawable.ic_1);
+                } else if (count[5] == 0) {
+                    card2b1.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card2b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[6] == 0) {
+                    count[6] = 8;
+                } else {
+                    count[6] = count[6] - 1;
+                }
+
+                if (count[6] == 8) {
+                    card2b2.setImageResource(R.drawable.ic_8);
+                } else if (count[6] == 7) {
+                    card2b2.setImageResource(R.drawable.ic_7);
+                } else if (count[6] == 6) {
+                    card2b2.setImageResource(R.drawable.ic_6);
+                } else if (count[6] == 5) {
+                    card2b2.setImageResource(R.drawable.ic_5);
+                } else if (count[6] == 4) {
+                    card2b2.setImageResource(R.drawable.ic_4);
+                } else if (count[6] == 3) {
+                    card2b2.setImageResource(R.drawable.ic_3);
+                } else if (count[6] == 2) {
+                    card2b2.setImageResource(R.drawable.ic_2);
+                } else if (count[6] == 1) {
+                    card2b2.setImageResource(R.drawable.ic_1);
+                } else if (count[6] == 0) {
+                    card2b2.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card2b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[7] == 0) {
+                    count[7] = 8;
+                } else {
+                    count[7] = count[7] - 1;
+                }
+
+                if (count[7] == 8) {
+                    card2b3.setImageResource(R.drawable.ic_8);
+                } else if (count[7] == 7) {
+                    card2b3.setImageResource(R.drawable.ic_7);
+                } else if (count[7] == 6) {
+                    card2b3.setImageResource(R.drawable.ic_6);
+                } else if (count[7] == 5) {
+                    card2b3.setImageResource(R.drawable.ic_5);
+                } else if (count[7] == 4) {
+                    card2b3.setImageResource(R.drawable.ic_4);
+                } else if (count[7] == 3) {
+                    card2b3.setImageResource(R.drawable.ic_3);
+                } else if (count[7] == 2) {
+                    card2b3.setImageResource(R.drawable.ic_2);
+                } else if (count[7] == 1) {
+                    card2b3.setImageResource(R.drawable.ic_1);
+                } else if (count[7] == 0) {
+                    card2b3.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card3b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[8] == 0) {
+                    count[8] = 10;
+                } else {
+                    count[8] = count[8] - 1;
+                }
+
+                if (count[8] == 10) {
+                    card3b1.setImageResource(R.drawable.ic_10);
+                } else if (count[8] == 9) {
+                    card3b1.setImageResource(R.drawable.ic_9);
+                } else if (count[8] == 8) {
+                    card3b1.setImageResource(R.drawable.ic_8);
+                } else if (count[8] == 7) {
+                    card3b1.setImageResource(R.drawable.ic_7);
+                } else if (count[8] == 6) {
+                    card3b1.setImageResource(R.drawable.ic_6);
+                } else if (count[8] == 5) {
+                    card3b1.setImageResource(R.drawable.ic_5);
+                } else if (count[8] == 4) {
+                    card3b1.setImageResource(R.drawable.ic_4);
+                } else if (count[8] == 3) {
+                    card3b1.setImageResource(R.drawable.ic_3);
+                } else if (count[8] == 2) {
+                    card3b1.setImageResource(R.drawable.ic_2);
+                } else if (count[8] == 1) {
+                    card3b1.setImageResource(R.drawable.ic_1);
+                } else if (count[8] == 0) {
+                    card3b1.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card3b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[9] == 0) {
+                    count[9] = 10;
+                } else {
+                    count[9] = count[9] - 1;
+                }
+
+                if (count[9] == 10) {
+                    card3b2.setImageResource(R.drawable.ic_10);
+                } else if (count[9] == 9) {
+                    card3b2.setImageResource(R.drawable.ic_9);
+                } else if (count[9] == 8) {
+                    card3b2.setImageResource(R.drawable.ic_8);
+                } else if (count[9] == 7) {
+                    card3b2.setImageResource(R.drawable.ic_7);
+                } else if (count[9] == 6) {
+                    card3b2.setImageResource(R.drawable.ic_6);
+                } else if (count[9] == 5) {
+                    card3b2.setImageResource(R.drawable.ic_5);
+                } else if (count[9] == 4) {
+                    card3b2.setImageResource(R.drawable.ic_4);
+                } else if (count[9] == 3) {
+                    card3b2.setImageResource(R.drawable.ic_3);
+                } else if (count[9] == 2) {
+                    card3b2.setImageResource(R.drawable.ic_2);
+                } else if (count[9] == 1) {
+                    card3b2.setImageResource(R.drawable.ic_1);
+                } else if (count[9] == 0) {
+                    card3b2.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card3b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[10] == 0) {
+                    count[10] = 10;
+                } else {
+                    count[10] = count[10] - 1;
+                }
+                if (count[10] == 10) {
+                    card3b3.setImageResource(R.drawable.ic_10);
+                } else if (count[10] == 9) {
+                    card3b3.setImageResource(R.drawable.ic_9);
+                } else if (count[10] == 8) {
+                    card3b3.setImageResource(R.drawable.ic_8);
+                } else if (count[10] == 7) {
+                    card3b3.setImageResource(R.drawable.ic_7);
+                } else if (count[10] == 6) {
+                    card3b3.setImageResource(R.drawable.ic_6);
+                } else if (count[10] == 5) {
+                    card3b3.setImageResource(R.drawable.ic_5);
+                } else if (count[10] == 4) {
+                    card3b3.setImageResource(R.drawable.ic_4);
+                } else if (count[10] == 3) {
+                    card3b3.setImageResource(R.drawable.ic_3);
+                } else if (count[10] == 2) {
+                    card3b3.setImageResource(R.drawable.ic_2);
+                } else if (count[10] == 1) {
+                    card3b3.setImageResource(R.drawable.ic_1);
+                } else if (count[10] == 0) {
+                    card3b3.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card4b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[11] == 0) {
+                    count[11] = 10;
+                } else {
+                    count[11] = count[11] - 1;
+                }
+
+                if (count[11] == 10) {
+                    card4b1.setImageResource(R.drawable.ic_10);
+                } else if (count[11] == 9) {
+                    card4b1.setImageResource(R.drawable.ic_9);
+                } else if (count[11] == 8) {
+                    card4b1.setImageResource(R.drawable.ic_8);
+                } else if (count[11] == 7) {
+                    card4b1.setImageResource(R.drawable.ic_7);
+                } else if (count[11] == 6) {
+                    card4b1.setImageResource(R.drawable.ic_6);
+                } else if (count[11] == 5) {
+                    card4b1.setImageResource(R.drawable.ic_5);
+                } else if (count[11] == 4) {
+                    card4b1.setImageResource(R.drawable.ic_4);
+                } else if (count[11] == 3) {
+                    card4b1.setImageResource(R.drawable.ic_3);
+                } else if (count[11] == 2) {
+                    card4b1.setImageResource(R.drawable.ic_2);
+                } else if (count[11] == 1) {
+                    card4b1.setImageResource(R.drawable.ic_1);
+                } else if (count[11] == 0) {
+                    card4b1.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card4b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[12] == 0) {
+                    count[12] = 10;
+                } else {
+                    count[12] = count[12] - 1;
+                }
+
+                if (count[12] == 10) {
+                    card4b2.setImageResource(R.drawable.ic_10);
+                } else if (count[12] == 9) {
+                    card4b2.setImageResource(R.drawable.ic_9);
+                } else if (count[12] == 8) {
+                    card4b2.setImageResource(R.drawable.ic_8);
+                } else if (count[12] == 7) {
+                    card4b2.setImageResource(R.drawable.ic_7);
+                } else if (count[12] == 6) {
+                    card4b2.setImageResource(R.drawable.ic_6);
+                } else if (count[12] == 5) {
+                    card4b2.setImageResource(R.drawable.ic_5);
+                } else if (count[12] == 4) {
+                    card4b2.setImageResource(R.drawable.ic_4);
+                } else if (count[12] == 3) {
+                    card4b2.setImageResource(R.drawable.ic_3);
+                } else if (count[12] == 2) {
+                    card4b2.setImageResource(R.drawable.ic_2);
+                } else if (count[12] == 1) {
+                    card4b2.setImageResource(R.drawable.ic_1);
+                } else if (count[12] == 0) {
+                    card4b2.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card4b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[13] == 0) {
+                    count[13] = 10;
+                } else {
+                    count[13] = count[13] - 1;
+                }
+
+                if (count[13] == 10) {
+                    card4b3.setImageResource(R.drawable.ic_10);
+                } else if (count[13] == 9) {
+                    card4b3.setImageResource(R.drawable.ic_9);
+                } else if (count[13] == 8) {
+                    card4b3.setImageResource(R.drawable.ic_8);
+                } else if (count[13] == 7) {
+                    card4b3.setImageResource(R.drawable.ic_7);
+                } else if (count[13] == 6) {
+                    card4b3.setImageResource(R.drawable.ic_6);
+                } else if (count[13] == 5) {
+                    card4b3.setImageResource(R.drawable.ic_5);
+                } else if (count[13] == 4) {
+                    card4b3.setImageResource(R.drawable.ic_4);
+                } else if (count[13] == 3) {
+                    card4b3.setImageResource(R.drawable.ic_3);
+                } else if (count[13] == 2) {
+                    card4b3.setImageResource(R.drawable.ic_2);
+                } else if (count[13] == 1) {
+                    card4b3.setImageResource(R.drawable.ic_1);
+                } else if (count[13] == 0) {
+                    card4b3.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card4b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[14] == 0) {
+                    count[14] = 10;
+                } else {
+                    count[14] = count[14] - 1;
+                }
+
+                if (count[14] == 10) {
+                    card4b4.setImageResource(R.drawable.ic_10);
+                } else if (count[14] == 9) {
+                    card4b4.setImageResource(R.drawable.ic_9);
+                } else if (count[14] == 8) {
+                    card4b4.setImageResource(R.drawable.ic_8);
+                } else if (count[14] == 7) {
+                    card4b4.setImageResource(R.drawable.ic_7);
+                } else if (count[14] == 6) {
+                    card4b4.setImageResource(R.drawable.ic_6);
+                } else if (count[14] == 5) {
+                    card4b4.setImageResource(R.drawable.ic_5);
+                } else if (count[14] == 4) {
+                    card4b4.setImageResource(R.drawable.ic_4);
+                } else if (count[14] == 3) {
+                    card4b4.setImageResource(R.drawable.ic_3);
+                } else if (count[14] == 2) {
+                    card4b4.setImageResource(R.drawable.ic_2);
+                } else if (count[14] == 1) {
+                    card4b4.setImageResource(R.drawable.ic_1);
+                } else if (count[14] == 0) {
+                    card4b4.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card4b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[15] == 0) {
+                    count[15] = 10;
+                } else {
+                    count[15] = count[15] - 1;
+                }
+
+                if (count[15] == 10) {
+                    card4b5.setImageResource(R.drawable.ic_10);
+                } else if (count[15] == 9) {
+                    card4b5.setImageResource(R.drawable.ic_9);
+                } else if (count[15] == 8) {
+                    card4b5.setImageResource(R.drawable.ic_8);
+                } else if (count[15] == 7) {
+                    card4b5.setImageResource(R.drawable.ic_7);
+                } else if (count[15] == 6) {
+                    card4b5.setImageResource(R.drawable.ic_6);
+                } else if (count[15] == 5) {
+                    card4b5.setImageResource(R.drawable.ic_5);
+                } else if (count[15] == 4) {
+                    card4b5.setImageResource(R.drawable.ic_4);
+                } else if (count[15] == 3) {
+                    card4b5.setImageResource(R.drawable.ic_3);
+                } else if (count[15] == 2) {
+                    card4b5.setImageResource(R.drawable.ic_2);
+                } else if (count[15] == 1) {
+                    card4b5.setImageResource(R.drawable.ic_1);
+                } else if (count[15] == 0) {
+                    card4b5.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card5b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[16] == 0) {
+                    count[16] = 10;
+                } else {
+                    count[16] = count[16] - 1;
+                }
+
+                if (count[16] == 10) {
+                    card5b1.setImageResource(R.drawable.ic_10);
+                } else if (count[16] == 9) {
+                    card5b1.setImageResource(R.drawable.ic_9);
+                } else if (count[16] == 8) {
+                    card5b1.setImageResource(R.drawable.ic_8);
+                } else if (count[16] == 7) {
+                    card5b1.setImageResource(R.drawable.ic_7);
+                } else if (count[16] == 6) {
+                    card5b1.setImageResource(R.drawable.ic_6);
+                } else if (count[16] == 5) {
+                    card5b1.setImageResource(R.drawable.ic_5);
+                } else if (count[16] == 4) {
+                    card5b1.setImageResource(R.drawable.ic_4);
+                } else if (count[16] == 3) {
+                    card5b1.setImageResource(R.drawable.ic_3);
+                } else if (count[16] == 2) {
+                    card5b1.setImageResource(R.drawable.ic_2);
+                } else if (count[16] == 1) {
+                    card5b1.setImageResource(R.drawable.ic_1);
+                } else if (count[16] == 0) {
+                    card5b1.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card5b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[17] == 0) {
+                    count[17] = 10;
+                } else {
+                    count[17] = count[17] - 1;
+                }
+
+                if (count[17] == 10) {
+                    card5b2.setImageResource(R.drawable.ic_10);
+                } else if (count[17] == 9) {
+                    card5b2.setImageResource(R.drawable.ic_9);
+                } else if (count[17] == 8) {
+                    card5b2.setImageResource(R.drawable.ic_8);
+                } else if (count[17] == 7) {
+                    card5b2.setImageResource(R.drawable.ic_7);
+                } else if (count[17] == 6) {
+                    card5b2.setImageResource(R.drawable.ic_6);
+                } else if (count[17] == 5) {
+                    card5b2.setImageResource(R.drawable.ic_5);
+                } else if (count[17] == 4) {
+                    card5b2.setImageResource(R.drawable.ic_4);
+                } else if (count[17] == 3) {
+                    card5b2.setImageResource(R.drawable.ic_3);
+                } else if (count[17] == 2) {
+                    card5b2.setImageResource(R.drawable.ic_2);
+                } else if (count[17] == 1) {
+                    card5b2.setImageResource(R.drawable.ic_1);
+                } else if (count[17] == 0) {
+                    card5b2.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card5b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count[18] == 0) {
+                    count[18] = 10;
+                } else {
+                    count[18] = count[18] - 1;
+                }
+
+                if (count[18] == 10) {
+                    card5b3.setImageResource(R.drawable.ic_10);
+                } else if (count[18] == 9) {
+                    card5b3.setImageResource(R.drawable.ic_9);
+                } else if (count[18] == 8) {
+                    card5b3.setImageResource(R.drawable.ic_8);
+                } else if (count[18] == 7) {
+                    card5b3.setImageResource(R.drawable.ic_7);
+                } else if (count[18] == 6) {
+                    card5b3.setImageResource(R.drawable.ic_6);
+                } else if (count[18] == 5) {
+                    card5b3.setImageResource(R.drawable.ic_5);
+                } else if (count[18] == 4) {
+                    card5b3.setImageResource(R.drawable.ic_4);
+                } else if (count[18] == 3) {
+                    card5b3.setImageResource(R.drawable.ic_3);
+                } else if (count[18] == 2) {
+                    card5b3.setImageResource(R.drawable.ic_2);
+                } else if (count[18] == 1) {
+                    card5b3.setImageResource(R.drawable.ic_1);
+                } else if (count[18] == 0) {
+                    card5b3.setImageResource(R.drawable.ic_0);
+                }
+
+            }
+        });
+
+        card5b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[19] == 0) {
+                    count[19] = 10;
+                } else {
+                    count[19] = count[19] - 1;
+                }
+
+                if (count[19] == 10) {
+                    card5b4.setImageResource(R.drawable.ic_10);
+                } else if (count[19] == 9) {
+                    card5b4.setImageResource(R.drawable.ic_9);
+                } else if (count[19] == 8) {
+                    card5b4.setImageResource(R.drawable.ic_8);
+                } else if (count[19] == 7) {
+                    card5b4.setImageResource(R.drawable.ic_7);
+                } else if (count[19] == 6) {
+                    card5b4.setImageResource(R.drawable.ic_6);
+                } else if (count[19] == 5) {
+                    card5b4.setImageResource(R.drawable.ic_5);
+                } else if (count[19] == 4) {
+                    card5b4.setImageResource(R.drawable.ic_4);
+                } else if (count[19] == 3) {
+                    card5b4.setImageResource(R.drawable.ic_3);
+                } else if (count[19] == 2) {
+                    card5b4.setImageResource(R.drawable.ic_2);
+                } else if (count[19] == 1) {
+                    card5b4.setImageResource(R.drawable.ic_1);
+                } else if (count[19] == 0) {
+                    card5b4.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card5b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[20] == 0) {
+                    count[20] = 10;
+                } else {
+                    count[20] = count[20] - 1;
+                }
+
+                if (count[20] == 10) {
+                    card5b5.setImageResource(R.drawable.ic_10);
+                } else if (count[20] == 9) {
+                    card5b5.setImageResource(R.drawable.ic_9);
+                } else if (count[20] == 8) {
+                    card5b5.setImageResource(R.drawable.ic_8);
+                } else if (count[20] == 7) {
+                    card5b5.setImageResource(R.drawable.ic_7);
+                } else if (count[20] == 6) {
+                    card5b5.setImageResource(R.drawable.ic_6);
+                } else if (count[20] == 5) {
+                    card5b5.setImageResource(R.drawable.ic_5);
+                } else if (count[20] == 4) {
+                    card5b5.setImageResource(R.drawable.ic_4);
+                } else if (count[20] == 3) {
+                    card5b5.setImageResource(R.drawable.ic_3);
+                } else if (count[20] == 2) {
+                    card5b5.setImageResource(R.drawable.ic_2);
+                } else if (count[20] == 1) {
+                    card5b5.setImageResource(R.drawable.ic_1);
+                } else if (count[20] == 0) {
+                    card5b5.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card6b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[21] == 0) {
+                    count[21] = 10;
+                } else {
+                    count[21] = count[21] - 1;
+                }
+
+                if (count[21] == 10) {
+                    card6b1.setImageResource(R.drawable.ic_10);
+                } else if (count[21] == 9) {
+                    card6b1.setImageResource(R.drawable.ic_9);
+                } else if (count[21] == 8) {
+                    card6b1.setImageResource(R.drawable.ic_8);
+                } else if (count[21] == 7) {
+                    card6b1.setImageResource(R.drawable.ic_7);
+                } else if (count[21] == 6) {
+                    card6b1.setImageResource(R.drawable.ic_6);
+                } else if (count[21] == 5) {
+                    card6b1.setImageResource(R.drawable.ic_5);
+                } else if (count[21] == 4) {
+                    card6b1.setImageResource(R.drawable.ic_4);
+                } else if (count[21] == 3) {
+                    card6b1.setImageResource(R.drawable.ic_3);
+                } else if (count[21] == 2) {
+                    card6b1.setImageResource(R.drawable.ic_2);
+                } else if (count[21] == 1) {
+                    card6b1.setImageResource(R.drawable.ic_1);
+                } else if (count[21] == 0) {
+                    card6b1.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card6b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[22] == 0) {
+                    count[22] = 10;
+                } else {
+                    count[22] = count[22] - 1;
+                }
+
+                if (count[22] == 10) {
+                    card6b2.setImageResource(R.drawable.ic_10);
+                } else if (count[22] == 9) {
+                    card6b2.setImageResource(R.drawable.ic_9);
+                } else if (count[22] == 8) {
+                    card6b2.setImageResource(R.drawable.ic_8);
+                } else if (count[22] == 7) {
+                    card6b2.setImageResource(R.drawable.ic_7);
+                } else if (count[22] == 6) {
+                    card6b2.setImageResource(R.drawable.ic_6);
+                } else if (count[22] == 5) {
+                    card6b2.setImageResource(R.drawable.ic_5);
+                } else if (count[22] == 4) {
+                    card6b2.setImageResource(R.drawable.ic_4);
+                } else if (count[22] == 3) {
+                    card6b2.setImageResource(R.drawable.ic_3);
+                } else if (count[22] == 2) {
+                    card6b2.setImageResource(R.drawable.ic_2);
+                } else if (count[22] == 1) {
+                    card6b2.setImageResource(R.drawable.ic_1);
+                } else if (count[22] == 0) {
+                    card6b2.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card6b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[23] == 0) {
+                    count[23] = 10;
+                } else {
+                    count[23] = count[23] - 1;
+                }
+
+                if (count[23] == 10) {
+                    card6b3.setImageResource(R.drawable.ic_10);
+                } else if (count[23] == 9) {
+                    card6b3.setImageResource(R.drawable.ic_9);
+                } else if (count[23] == 8) {
+                    card6b3.setImageResource(R.drawable.ic_8);
+                } else if (count[23] == 7) {
+                    card6b3.setImageResource(R.drawable.ic_7);
+                } else if (count[23] == 6) {
+                    card6b3.setImageResource(R.drawable.ic_6);
+                } else if (count[23] == 5) {
+                    card6b3.setImageResource(R.drawable.ic_5);
+                } else if (count[23] == 4) {
+                    card6b3.setImageResource(R.drawable.ic_4);
+                } else if (count[23] == 3) {
+                    card6b3.setImageResource(R.drawable.ic_3);
+                } else if (count[23] == 2) {
+                    card6b3.setImageResource(R.drawable.ic_2);
+                } else if (count[23] == 1) {
+                    card6b3.setImageResource(R.drawable.ic_1);
+                } else if (count[23] == 0) {
+                    card6b3.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card6b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[24] == 0) {
+                    count[24] = 10;
+                } else {
+                    count[24] = count[24] - 1;
+                }
+
+                if (count[24] == 10) {
+                    card6b4.setImageResource(R.drawable.ic_10);
+                } else if (count[24] == 9) {
+                    card6b4.setImageResource(R.drawable.ic_9);
+                } else if (count[24] == 8) {
+                    card6b4.setImageResource(R.drawable.ic_8);
+                } else if (count[24] == 7) {
+                    card6b4.setImageResource(R.drawable.ic_7);
+                } else if (count[24] == 6) {
+                    card6b4.setImageResource(R.drawable.ic_6);
+                } else if (count[24] == 5) {
+                    card6b4.setImageResource(R.drawable.ic_5);
+                } else if (count[24] == 4) {
+                    card6b4.setImageResource(R.drawable.ic_4);
+                } else if (count[24] == 3) {
+                    card6b4.setImageResource(R.drawable.ic_3);
+                } else if (count[24] == 2) {
+                    card6b4.setImageResource(R.drawable.ic_2);
+                } else if (count[24] == 1) {
+                    card6b4.setImageResource(R.drawable.ic_1);
+                } else if (count[24] == 0) {
+                    card6b4.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        card6b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count[25] == 0) {
+                    count[25] = 10;
+                } else {
+                    count[25] = count[25] - 1;
+                }
+
+                if (count[25] == 10) {
+                    card6b5.setImageResource(R.drawable.ic_10);
+                } else if (count[25] == 9) {
+                    card6b5.setImageResource(R.drawable.ic_9);
+                } else if (count[25] == 8) {
+                    card6b5.setImageResource(R.drawable.ic_8);
+                } else if (count[25] == 7) {
+                    card6b5.setImageResource(R.drawable.ic_7);
+                } else if (count[25] == 6) {
+                    card6b5.setImageResource(R.drawable.ic_6);
+                } else if (count[25] == 5) {
+                    card6b5.setImageResource(R.drawable.ic_5);
+                } else if (count[25] == 4) {
+                    card6b5.setImageResource(R.drawable.ic_4);
+                } else if (count[25] == 3) {
+                    card6b5.setImageResource(R.drawable.ic_3);
+                } else if (count[25] == 2) {
+                    card6b5.setImageResource(R.drawable.ic_2);
+                } else if (count[25] == 1) {
+                    card6b5.setImageResource(R.drawable.ic_1);
+                } else if (count[25] == 0) {
+                    card6b5.setImageResource(R.drawable.ic_0);
+                }
+            }
+        });
+
+        mTextViewCountDown = findViewById(R.id.card1Time);
+        mButtonStartPause = findViewById(R.id.card1TimeLayout);
+
+        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTimer();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "countdown started", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        updateCountDownText();
+
+
+/*
         //Initialzing textboxes and done action listener
         ct1 = (TextView) findViewById(R.id.textView7);
         ct2 = (TextView) findViewById(R.id.textView9);
@@ -1382,7 +2478,7 @@ public class MainA extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signin.signout();
+                //signin.signout();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 boolean previouslyStarted = prefs.getBoolean(getString(R.string.pref_previously_started), false);
                 SharedPreferences.Editor edit = prefs.edit();
@@ -1646,863 +2742,8 @@ public class MainA extends AppCompatActivity {
                     }
                 });
 
-        //Circle button
-        cb1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                if (count[0] == 0) {
-                    count[0] = 3;
-                } else {
-                    count[0] = count[0] - 1;
-                }
 
-                if (count[0] == 3) {
-                    cb1.setImageResource(R.drawable.ic_3);
-                } else if (count[0] == 2) {
-                    cb1.setImageResource(R.drawable.ic_2);
-                } else if (count[0] == 1) {
-                    cb1.setImageResource(R.drawable.ic_1);
-                } else if (count[0] == 0) {
-                    cb1.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[1] == 0) {
-                    count[1] = 3;
-                } else {
-                    count[1] = count[1] - 1;
-                }
-
-                if (count[1] == 3) {
-                    cb2.setImageResource(R.drawable.ic_3);
-                } else if (count[1] == 2) {
-                    cb2.setImageResource(R.drawable.ic_2);
-                } else if (count[1] == 1) {
-                    cb2.setImageResource(R.drawable.ic_1);
-                } else if (count[1] == 0) {
-                    cb2.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[2] == 0) {
-                    count[2] = 3;
-                } else {
-                    count[2] = count[2] - 1;
-                }
-
-                if (count[2] == 3) {
-                    cb3.setImageResource(R.drawable.ic_3);
-                } else if (count[2] == 2) {
-                    cb3.setImageResource(R.drawable.ic_2);
-                } else if (count[2] == 1) {
-                    cb3.setImageResource(R.drawable.ic_1);
-                } else if (count[2] == 0) {
-                    cb3.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[3] == 0) {
-                    count[3] = 3;
-                } else {
-                    count[3] = count[3] - 1;
-                }
-
-                if (count[3] == 3) {
-                    cb4.setImageResource(R.drawable.ic_3);
-                } else if (count[3] == 2) {
-                    cb4.setImageResource(R.drawable.ic_2);
-                } else if (count[3] == 1) {
-                    cb4.setImageResource(R.drawable.ic_1);
-                } else if (count[3] == 0) {
-                    cb4.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[4] == 0) {
-                    count[4] = 3;
-                } else {
-                    count[4] = count[4] - 1;
-                }
-
-                if (count[4] == 3) {
-                    cb5.setImageResource(R.drawable.ic_3);
-                } else if (count[4] == 2) {
-                    cb5.setImageResource(R.drawable.ic_2);
-                } else if (count[4] == 1) {
-                    cb5.setImageResource(R.drawable.ic_1);
-                } else if (count[4] == 0) {
-                    cb5.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[5] == 0) {
-                    count[5] = 8;
-                } else {
-                    count[5] = count[5] - 1;
-                }
-
-                if (count[5] == 8) {
-                    cb6.setImageResource(R.drawable.ic_8);
-                } else if (count[5] == 7) {
-                    cb6.setImageResource(R.drawable.ic_7);
-                } else if (count[5] == 6) {
-                    cb6.setImageResource(R.drawable.ic_6);
-                } else if (count[5] == 5) {
-                    cb6.setImageResource(R.drawable.ic_5);
-                } else if (count[5] == 4) {
-                    cb6.setImageResource(R.drawable.ic_4);
-                } else if (count[5] == 3) {
-                    cb6.setImageResource(R.drawable.ic_3);
-                } else if (count[5] == 2) {
-                    cb6.setImageResource(R.drawable.ic_2);
-                } else if (count[5] == 1) {
-                    cb6.setImageResource(R.drawable.ic_1);
-                } else if (count[5] == 0) {
-                    cb6.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[6] == 0) {
-                    count[6] = 8;
-                } else {
-                    count[6] = count[6] - 1;
-                }
-
-                if (count[6] == 8) {
-                    cb7.setImageResource(R.drawable.ic_8);
-                } else if (count[6] == 7) {
-                    cb7.setImageResource(R.drawable.ic_7);
-                } else if (count[6] == 6) {
-                    cb7.setImageResource(R.drawable.ic_6);
-                } else if (count[6] == 5) {
-                    cb7.setImageResource(R.drawable.ic_5);
-                } else if (count[6] == 4) {
-                    cb7.setImageResource(R.drawable.ic_4);
-                } else if (count[6] == 3) {
-                    cb7.setImageResource(R.drawable.ic_3);
-                } else if (count[6] == 2) {
-                    cb7.setImageResource(R.drawable.ic_2);
-                } else if (count[6] == 1) {
-                    cb7.setImageResource(R.drawable.ic_1);
-                } else if (count[6] == 0) {
-                    cb7.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[7] == 0) {
-                    count[7] = 8;
-                } else {
-                    count[7] = count[7] - 1;
-                }
-
-                if (count[7] == 8) {
-                    cb8.setImageResource(R.drawable.ic_8);
-                } else if (count[7] == 7) {
-                    cb8.setImageResource(R.drawable.ic_7);
-                } else if (count[7] == 6) {
-                    cb8.setImageResource(R.drawable.ic_6);
-                } else if (count[7] == 5) {
-                    cb8.setImageResource(R.drawable.ic_5);
-                } else if (count[7] == 4) {
-                    cb8.setImageResource(R.drawable.ic_4);
-                } else if (count[7] == 3) {
-                    cb8.setImageResource(R.drawable.ic_3);
-                } else if (count[7] == 2) {
-                    cb8.setImageResource(R.drawable.ic_2);
-                } else if (count[7] == 1) {
-                    cb8.setImageResource(R.drawable.ic_1);
-                } else if (count[7] == 0) {
-                    cb8.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[8] == 0) {
-                    count[8] = 10;
-                } else {
-                    count[8] = count[8] - 1;
-                }
-
-                if (count[8] == 10) {
-                    cb9.setImageResource(R.drawable.ic_10);
-                } else if (count[8] == 9) {
-                    cb9.setImageResource(R.drawable.ic_9);
-                } else if (count[8] == 8) {
-                    cb9.setImageResource(R.drawable.ic_8);
-                } else if (count[8] == 7) {
-                    cb9.setImageResource(R.drawable.ic_7);
-                } else if (count[8] == 6) {
-                    cb9.setImageResource(R.drawable.ic_6);
-                } else if (count[8] == 5) {
-                    cb9.setImageResource(R.drawable.ic_5);
-                } else if (count[8] == 4) {
-                    cb9.setImageResource(R.drawable.ic_4);
-                } else if (count[8] == 3) {
-                    cb9.setImageResource(R.drawable.ic_3);
-                } else if (count[8] == 2) {
-                    cb9.setImageResource(R.drawable.ic_2);
-                } else if (count[8] == 1) {
-                    cb9.setImageResource(R.drawable.ic_1);
-                } else if (count[8] == 0) {
-                    cb9.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[9] == 0) {
-                    count[9] = 10;
-                } else {
-                    count[9] = count[9] - 1;
-                }
-
-                if (count[9] == 10) {
-                    cb10.setImageResource(R.drawable.ic_10);
-                } else if (count[9] == 9) {
-                    cb10.setImageResource(R.drawable.ic_9);
-                } else if (count[9] == 8) {
-                    cb10.setImageResource(R.drawable.ic_8);
-                } else if (count[9] == 7) {
-                    cb10.setImageResource(R.drawable.ic_7);
-                } else if (count[9] == 6) {
-                    cb10.setImageResource(R.drawable.ic_6);
-                } else if (count[9] == 5) {
-                    cb10.setImageResource(R.drawable.ic_5);
-                } else if (count[9] == 4) {
-                    cb10.setImageResource(R.drawable.ic_4);
-                } else if (count[9] == 3) {
-                    cb10.setImageResource(R.drawable.ic_3);
-                } else if (count[9] == 2) {
-                    cb10.setImageResource(R.drawable.ic_2);
-                } else if (count[9] == 1) {
-                    cb10.setImageResource(R.drawable.ic_1);
-                } else if (count[9] == 0) {
-                    cb10.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[10] == 0) {
-                    count[10] = 10;
-                } else {
-                    count[10] = count[10] - 1;
-                }
-                if (count[10] == 10) {
-                    cb11.setImageResource(R.drawable.ic_10);
-                } else if (count[10] == 9) {
-                    cb11.setImageResource(R.drawable.ic_9);
-                } else if (count[10] == 8) {
-                    cb11.setImageResource(R.drawable.ic_8);
-                } else if (count[10] == 7) {
-                    cb11.setImageResource(R.drawable.ic_7);
-                } else if (count[10] == 6) {
-                    cb11.setImageResource(R.drawable.ic_6);
-                } else if (count[10] == 5) {
-                    cb11.setImageResource(R.drawable.ic_5);
-                } else if (count[10] == 4) {
-                    cb11.setImageResource(R.drawable.ic_4);
-                } else if (count[10] == 3) {
-                    cb11.setImageResource(R.drawable.ic_3);
-                } else if (count[10] == 2) {
-                    cb11.setImageResource(R.drawable.ic_2);
-                } else if (count[10] == 1) {
-                    cb11.setImageResource(R.drawable.ic_1);
-                } else if (count[10] == 0) {
-                    cb11.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[11] == 0) {
-                    count[11] = 10;
-                } else {
-                    count[11] = count[11] - 1;
-                }
-
-                if (count[11] == 10) {
-                    cb12.setImageResource(R.drawable.ic_10);
-                } else if (count[11] == 9) {
-                    cb12.setImageResource(R.drawable.ic_9);
-                } else if (count[11] == 8) {
-                    cb12.setImageResource(R.drawable.ic_8);
-                } else if (count[11] == 7) {
-                    cb12.setImageResource(R.drawable.ic_7);
-                } else if (count[11] == 6) {
-                    cb12.setImageResource(R.drawable.ic_6);
-                } else if (count[11] == 5) {
-                    cb12.setImageResource(R.drawable.ic_5);
-                } else if (count[11] == 4) {
-                    cb12.setImageResource(R.drawable.ic_4);
-                } else if (count[11] == 3) {
-                    cb12.setImageResource(R.drawable.ic_3);
-                } else if (count[11] == 2) {
-                    cb12.setImageResource(R.drawable.ic_2);
-                } else if (count[11] == 1) {
-                    cb12.setImageResource(R.drawable.ic_1);
-                } else if (count[11] == 0) {
-                    cb12.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[12] == 0) {
-                    count[12] = 10;
-                } else {
-                    count[12] = count[12] - 1;
-                }
-
-                if (count[12] == 10) {
-                    cb13.setImageResource(R.drawable.ic_10);
-                } else if (count[12] == 9) {
-                    cb13.setImageResource(R.drawable.ic_9);
-                } else if (count[12] == 8) {
-                    cb13.setImageResource(R.drawable.ic_8);
-                } else if (count[12] == 7) {
-                    cb13.setImageResource(R.drawable.ic_7);
-                } else if (count[12] == 6) {
-                    cb13.setImageResource(R.drawable.ic_6);
-                } else if (count[12] == 5) {
-                    cb13.setImageResource(R.drawable.ic_5);
-                } else if (count[12] == 4) {
-                    cb13.setImageResource(R.drawable.ic_4);
-                } else if (count[12] == 3) {
-                    cb13.setImageResource(R.drawable.ic_3);
-                } else if (count[12] == 2) {
-                    cb13.setImageResource(R.drawable.ic_2);
-                } else if (count[12] == 1) {
-                    cb13.setImageResource(R.drawable.ic_1);
-                } else if (count[12] == 0) {
-                    cb13.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb14.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[13] == 0) {
-                    count[13] = 10;
-                } else {
-                    count[13] = count[13] - 1;
-                }
-
-                if (count[13] == 10) {
-                    cb14.setImageResource(R.drawable.ic_10);
-                } else if (count[13] == 9) {
-                    cb14.setImageResource(R.drawable.ic_9);
-                } else if (count[13] == 8) {
-                    cb14.setImageResource(R.drawable.ic_8);
-                } else if (count[13] == 7) {
-                    cb14.setImageResource(R.drawable.ic_7);
-                } else if (count[13] == 6) {
-                    cb14.setImageResource(R.drawable.ic_6);
-                } else if (count[13] == 5) {
-                    cb14.setImageResource(R.drawable.ic_5);
-                } else if (count[13] == 4) {
-                    cb14.setImageResource(R.drawable.ic_4);
-                } else if (count[13] == 3) {
-                    cb14.setImageResource(R.drawable.ic_3);
-                } else if (count[13] == 2) {
-                    cb14.setImageResource(R.drawable.ic_2);
-                } else if (count[13] == 1) {
-                    cb14.setImageResource(R.drawable.ic_1);
-                } else if (count[13] == 0) {
-                    cb14.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb15.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[14] == 0) {
-                    count[14] = 10;
-                } else {
-                    count[14] = count[14] - 1;
-                }
-
-                if (count[14] == 10) {
-                    cb15.setImageResource(R.drawable.ic_10);
-                } else if (count[14] == 9) {
-                    cb15.setImageResource(R.drawable.ic_9);
-                } else if (count[14] == 8) {
-                    cb15.setImageResource(R.drawable.ic_8);
-                } else if (count[14] == 7) {
-                    cb15.setImageResource(R.drawable.ic_7);
-                } else if (count[14] == 6) {
-                    cb15.setImageResource(R.drawable.ic_6);
-                } else if (count[14] == 5) {
-                    cb15.setImageResource(R.drawable.ic_5);
-                } else if (count[14] == 4) {
-                    cb15.setImageResource(R.drawable.ic_4);
-                } else if (count[14] == 3) {
-                    cb15.setImageResource(R.drawable.ic_3);
-                } else if (count[14] == 2) {
-                    cb15.setImageResource(R.drawable.ic_2);
-                } else if (count[14] == 1) {
-                    cb15.setImageResource(R.drawable.ic_1);
-                } else if (count[14] == 0) {
-                    cb15.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb16.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[15] == 0) {
-                    count[15] = 10;
-                } else {
-                    count[15] = count[15] - 1;
-                }
-
-                if (count[15] == 10) {
-                    cb16.setImageResource(R.drawable.ic_10);
-                } else if (count[15] == 9) {
-                    cb16.setImageResource(R.drawable.ic_9);
-                } else if (count[15] == 8) {
-                    cb16.setImageResource(R.drawable.ic_8);
-                } else if (count[15] == 7) {
-                    cb16.setImageResource(R.drawable.ic_7);
-                } else if (count[15] == 6) {
-                    cb16.setImageResource(R.drawable.ic_6);
-                } else if (count[15] == 5) {
-                    cb16.setImageResource(R.drawable.ic_5);
-                } else if (count[15] == 4) {
-                    cb16.setImageResource(R.drawable.ic_4);
-                } else if (count[15] == 3) {
-                    cb16.setImageResource(R.drawable.ic_3);
-                } else if (count[15] == 2) {
-                    cb16.setImageResource(R.drawable.ic_2);
-                } else if (count[15] == 1) {
-                    cb16.setImageResource(R.drawable.ic_1);
-                } else if (count[15] == 0) {
-                    cb16.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb17.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[16] == 0) {
-                    count[16] = 10;
-                } else {
-                    count[16] = count[16] - 1;
-                }
-
-                if (count[16] == 10) {
-                    cb17.setImageResource(R.drawable.ic_10);
-                } else if (count[16] == 9) {
-                    cb17.setImageResource(R.drawable.ic_9);
-                } else if (count[16] == 8) {
-                    cb17.setImageResource(R.drawable.ic_8);
-                } else if (count[16] == 7) {
-                    cb17.setImageResource(R.drawable.ic_7);
-                } else if (count[16] == 6) {
-                    cb17.setImageResource(R.drawable.ic_6);
-                } else if (count[16] == 5) {
-                    cb17.setImageResource(R.drawable.ic_5);
-                } else if (count[16] == 4) {
-                    cb17.setImageResource(R.drawable.ic_4);
-                } else if (count[16] == 3) {
-                    cb17.setImageResource(R.drawable.ic_3);
-                } else if (count[16] == 2) {
-                    cb17.setImageResource(R.drawable.ic_2);
-                } else if (count[16] == 1) {
-                    cb17.setImageResource(R.drawable.ic_1);
-                } else if (count[16] == 0) {
-                    cb17.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb18.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[17] == 0) {
-                    count[17] = 10;
-                } else {
-                    count[17] = count[17] - 1;
-                }
-
-                if (count[17] == 10) {
-                    cb18.setImageResource(R.drawable.ic_10);
-                } else if (count[17] == 9) {
-                    cb18.setImageResource(R.drawable.ic_9);
-                } else if (count[17] == 8) {
-                    cb18.setImageResource(R.drawable.ic_8);
-                } else if (count[17] == 7) {
-                    cb18.setImageResource(R.drawable.ic_7);
-                } else if (count[17] == 6) {
-                    cb18.setImageResource(R.drawable.ic_6);
-                } else if (count[17] == 5) {
-                    cb18.setImageResource(R.drawable.ic_5);
-                } else if (count[17] == 4) {
-                    cb18.setImageResource(R.drawable.ic_4);
-                } else if (count[17] == 3) {
-                    cb18.setImageResource(R.drawable.ic_3);
-                } else if (count[17] == 2) {
-                    cb18.setImageResource(R.drawable.ic_2);
-                } else if (count[17] == 1) {
-                    cb18.setImageResource(R.drawable.ic_1);
-                } else if (count[17] == 0) {
-                    cb18.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb19.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count[18] == 0) {
-                    count[18] = 10;
-                } else {
-                    count[18] = count[18] - 1;
-                }
-
-                if (count[18] == 10) {
-                    cb19.setImageResource(R.drawable.ic_10);
-                } else if (count[18] == 9) {
-                    cb19.setImageResource(R.drawable.ic_9);
-                } else if (count[18] == 8) {
-                    cb19.setImageResource(R.drawable.ic_8);
-                } else if (count[18] == 7) {
-                    cb19.setImageResource(R.drawable.ic_7);
-                } else if (count[18] == 6) {
-                    cb19.setImageResource(R.drawable.ic_6);
-                } else if (count[18] == 5) {
-                    cb19.setImageResource(R.drawable.ic_5);
-                } else if (count[18] == 4) {
-                    cb19.setImageResource(R.drawable.ic_4);
-                } else if (count[18] == 3) {
-                    cb19.setImageResource(R.drawable.ic_3);
-                } else if (count[18] == 2) {
-                    cb19.setImageResource(R.drawable.ic_2);
-                } else if (count[18] == 1) {
-                    cb19.setImageResource(R.drawable.ic_1);
-                } else if (count[18] == 0) {
-                    cb19.setImageResource(R.drawable.ic_0);
-                }
-
-            }
-        });
-
-        cb20.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[19] == 0) {
-                    count[19] = 10;
-                } else {
-                    count[19] = count[19] - 1;
-                }
-
-                if (count[19] == 10) {
-                    cb20.setImageResource(R.drawable.ic_10);
-                } else if (count[19] == 9) {
-                    cb20.setImageResource(R.drawable.ic_9);
-                } else if (count[19] == 8) {
-                    cb20.setImageResource(R.drawable.ic_8);
-                } else if (count[19] == 7) {
-                    cb20.setImageResource(R.drawable.ic_7);
-                } else if (count[19] == 6) {
-                    cb20.setImageResource(R.drawable.ic_6);
-                } else if (count[19] == 5) {
-                    cb20.setImageResource(R.drawable.ic_5);
-                } else if (count[19] == 4) {
-                    cb20.setImageResource(R.drawable.ic_4);
-                } else if (count[19] == 3) {
-                    cb20.setImageResource(R.drawable.ic_3);
-                } else if (count[19] == 2) {
-                    cb20.setImageResource(R.drawable.ic_2);
-                } else if (count[19] == 1) {
-                    cb20.setImageResource(R.drawable.ic_1);
-                } else if (count[19] == 0) {
-                    cb20.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb21.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[20] == 0) {
-                    count[20] = 10;
-                } else {
-                    count[20] = count[20] - 1;
-                }
-
-                if (count[20] == 10) {
-                    cb21.setImageResource(R.drawable.ic_10);
-                } else if (count[20] == 9) {
-                    cb21.setImageResource(R.drawable.ic_9);
-                } else if (count[20] == 8) {
-                    cb21.setImageResource(R.drawable.ic_8);
-                } else if (count[20] == 7) {
-                    cb21.setImageResource(R.drawable.ic_7);
-                } else if (count[20] == 6) {
-                    cb21.setImageResource(R.drawable.ic_6);
-                } else if (count[20] == 5) {
-                    cb21.setImageResource(R.drawable.ic_5);
-                } else if (count[20] == 4) {
-                    cb21.setImageResource(R.drawable.ic_4);
-                } else if (count[20] == 3) {
-                    cb21.setImageResource(R.drawable.ic_3);
-                } else if (count[20] == 2) {
-                    cb21.setImageResource(R.drawable.ic_2);
-                } else if (count[20] == 1) {
-                    cb21.setImageResource(R.drawable.ic_1);
-                } else if (count[20] == 0) {
-                    cb21.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb22.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[21] == 0) {
-                    count[21] = 10;
-                } else {
-                    count[21] = count[21] - 1;
-                }
-
-                if (count[21] == 10) {
-                    cb22.setImageResource(R.drawable.ic_10);
-                } else if (count[21] == 9) {
-                    cb22.setImageResource(R.drawable.ic_9);
-                } else if (count[21] == 8) {
-                    cb22.setImageResource(R.drawable.ic_8);
-                } else if (count[21] == 7) {
-                    cb22.setImageResource(R.drawable.ic_7);
-                } else if (count[21] == 6) {
-                    cb22.setImageResource(R.drawable.ic_6);
-                } else if (count[21] == 5) {
-                    cb22.setImageResource(R.drawable.ic_5);
-                } else if (count[21] == 4) {
-                    cb22.setImageResource(R.drawable.ic_4);
-                } else if (count[21] == 3) {
-                    cb22.setImageResource(R.drawable.ic_3);
-                } else if (count[21] == 2) {
-                    cb22.setImageResource(R.drawable.ic_2);
-                } else if (count[21] == 1) {
-                    cb22.setImageResource(R.drawable.ic_1);
-                } else if (count[21] == 0) {
-                    cb22.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb23.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[22] == 0) {
-                    count[22] = 10;
-                } else {
-                    count[22] = count[22] - 1;
-                }
-
-                if (count[22] == 10) {
-                    cb23.setImageResource(R.drawable.ic_10);
-                } else if (count[22] == 9) {
-                    cb23.setImageResource(R.drawable.ic_9);
-                } else if (count[22] == 8) {
-                    cb23.setImageResource(R.drawable.ic_8);
-                } else if (count[22] == 7) {
-                    cb23.setImageResource(R.drawable.ic_7);
-                } else if (count[22] == 6) {
-                    cb23.setImageResource(R.drawable.ic_6);
-                } else if (count[22] == 5) {
-                    cb23.setImageResource(R.drawable.ic_5);
-                } else if (count[22] == 4) {
-                    cb23.setImageResource(R.drawable.ic_4);
-                } else if (count[22] == 3) {
-                    cb23.setImageResource(R.drawable.ic_3);
-                } else if (count[22] == 2) {
-                    cb23.setImageResource(R.drawable.ic_2);
-                } else if (count[22] == 1) {
-                    cb23.setImageResource(R.drawable.ic_1);
-                } else if (count[22] == 0) {
-                    cb23.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb24.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[23] == 0) {
-                    count[23] = 10;
-                } else {
-                    count[23] = count[23] - 1;
-                }
-
-                if (count[23] == 10) {
-                    cb24.setImageResource(R.drawable.ic_10);
-                } else if (count[23] == 9) {
-                    cb24.setImageResource(R.drawable.ic_9);
-                } else if (count[23] == 8) {
-                    cb24.setImageResource(R.drawable.ic_8);
-                } else if (count[23] == 7) {
-                    cb24.setImageResource(R.drawable.ic_7);
-                } else if (count[23] == 6) {
-                    cb24.setImageResource(R.drawable.ic_6);
-                } else if (count[23] == 5) {
-                    cb24.setImageResource(R.drawable.ic_5);
-                } else if (count[23] == 4) {
-                    cb24.setImageResource(R.drawable.ic_4);
-                } else if (count[23] == 3) {
-                    cb24.setImageResource(R.drawable.ic_3);
-                } else if (count[23] == 2) {
-                    cb24.setImageResource(R.drawable.ic_2);
-                } else if (count[23] == 1) {
-                    cb24.setImageResource(R.drawable.ic_1);
-                } else if (count[23] == 0) {
-                    cb24.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb25.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[24] == 0) {
-                    count[24] = 10;
-                } else {
-                    count[24] = count[24] - 1;
-                }
-
-                if (count[24] == 10) {
-                    cb25.setImageResource(R.drawable.ic_10);
-                } else if (count[24] == 9) {
-                    cb25.setImageResource(R.drawable.ic_9);
-                } else if (count[24] == 8) {
-                    cb25.setImageResource(R.drawable.ic_8);
-                } else if (count[24] == 7) {
-                    cb25.setImageResource(R.drawable.ic_7);
-                } else if (count[24] == 6) {
-                    cb25.setImageResource(R.drawable.ic_6);
-                } else if (count[24] == 5) {
-                    cb25.setImageResource(R.drawable.ic_5);
-                } else if (count[24] == 4) {
-                    cb25.setImageResource(R.drawable.ic_4);
-                } else if (count[24] == 3) {
-                    cb25.setImageResource(R.drawable.ic_3);
-                } else if (count[24] == 2) {
-                    cb25.setImageResource(R.drawable.ic_2);
-                } else if (count[24] == 1) {
-                    cb25.setImageResource(R.drawable.ic_1);
-                } else if (count[24] == 0) {
-                    cb25.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        cb26.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count[25] == 0) {
-                    count[25] = 10;
-                } else {
-                    count[25] = count[25] - 1;
-                }
-
-                if (count[25] == 10) {
-                    cb26.setImageResource(R.drawable.ic_10);
-                } else if (count[25] == 9) {
-                    cb26.setImageResource(R.drawable.ic_9);
-                } else if (count[25] == 8) {
-                    cb26.setImageResource(R.drawable.ic_8);
-                } else if (count[25] == 7) {
-                    cb26.setImageResource(R.drawable.ic_7);
-                } else if (count[25] == 6) {
-                    cb26.setImageResource(R.drawable.ic_6);
-                } else if (count[25] == 5) {
-                    cb26.setImageResource(R.drawable.ic_5);
-                } else if (count[25] == 4) {
-                    cb26.setImageResource(R.drawable.ic_4);
-                } else if (count[25] == 3) {
-                    cb26.setImageResource(R.drawable.ic_3);
-                } else if (count[25] == 2) {
-                    cb26.setImageResource(R.drawable.ic_2);
-                } else if (count[25] == 1) {
-                    cb26.setImageResource(R.drawable.ic_1);
-                } else if (count[25] == 0) {
-                    cb26.setImageResource(R.drawable.ic_0);
-                }
-            }
-        });
-
-        today(day2, dayselected);
-    }
     private void updatexlabel(final int ia){
         graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
@@ -2768,19 +3009,19 @@ public class MainA extends AppCompatActivity {
                 hc1.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs1.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb1.setImageResource(temp);
+                hcard1b1.setImageResource(temp);
                 imtemp = "ic_" + dbs1.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb2.setImageResource(temp);
+                hcard1b2.setImageResource(temp);
                 imtemp = "ic_" + dbs1.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb3.setImageResource(temp);
+                hcard1b3.setImageResource(temp);
                 imtemp = "ic_" + dbs1.getinfo(4);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb4.setImageResource(temp);
+                hcard1b4.setImageResource(temp);
                 imtemp = "ic_" + dbs1.getinfo(5);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb5.setImageResource(temp);
+                hcard1b5.setImageResource(temp);
             }
             if (dbs2.getday(date).equals(date)) {
                 if (dbs2.getinfo(4) == 1) {
@@ -2800,13 +3041,13 @@ public class MainA extends AppCompatActivity {
                 hc2.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs2.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb6.setImageResource(temp);
+                hcard2b1.setImageResource(temp);
                 imtemp = "ic_" + dbs2.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb7.setImageResource(temp);
+                hcard2b2.setImageResource(temp);
                 imtemp = "ic_" + dbs2.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb8.setImageResource(temp);
+                hcard2b3.setImageResource(temp);
             }
             if (dbs3.getday(date).equals(date)) {
                 if (dbs3.getinfo(4) == 1) {
@@ -2826,13 +3067,13 @@ public class MainA extends AppCompatActivity {
                 hc3.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs3.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb9.setImageResource(temp);
+                hcard3b1.setImageResource(temp);
                 imtemp = "ic_" + dbs3.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb10.setImageResource(temp);
+                hcard3b2.setImageResource(temp);
                 imtemp = "ic_" + dbs3.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb11.setImageResource(temp);
+                hcard3b3.setImageResource(temp);
             }
             if (dbs4.getday(date).equals(date)) {
                 if (dbs4.getinfo(6) == 1) {
@@ -2852,19 +3093,19 @@ public class MainA extends AppCompatActivity {
                 hc4.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs4.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb12.setImageResource(temp);
+                hcard4b1.setImageResource(temp);
                 imtemp = "ic_" + dbs4.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb13.setImageResource(temp);
+                hcard4b2.setImageResource(temp);
                 imtemp = "ic_" + dbs4.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb14.setImageResource(temp);
+                hcard4b3.setImageResource(temp);
                 imtemp = "ic_" + dbs4.getinfo(4);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb15.setImageResource(temp);
+                hcard4b4.setImageResource(temp);
                 imtemp = "ic_" + dbs4.getinfo(5);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb16.setImageResource(temp);
+                hcard4b5.setImageResource(temp);
             }
             if (dbs5.getday(date).equals(date)) {
                 if (dbs5.getinfo(6) == 1) {
@@ -2884,19 +3125,19 @@ public class MainA extends AppCompatActivity {
                 hc5.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs5.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb17.setImageResource(temp);
+                hcard5b1.setImageResource(temp);
                 imtemp = "ic_" + dbs5.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb18.setImageResource(temp);
+                hcard5b2.setImageResource(temp);
                 imtemp = "ic_" + dbs5.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb19.setImageResource(temp);
+                hcard5b3.setImageResource(temp);
                 imtemp = "ic_" + dbs5.getinfo(4);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb20.setImageResource(temp);
+                hcard5b4.setImageResource(temp);
                 imtemp = "ic_" + dbs5.getinfo(5);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb21.setImageResource(temp);
+                hcard5b5.setImageResource(temp);
             }
             if (dbs6.getday(date).equals(date)) {
                 if (dbs6.getinfo(6) == 1) {
@@ -2916,19 +3157,19 @@ public class MainA extends AppCompatActivity {
                 hc6.setVisibility(View.VISIBLE);
                 imtemp = "ic_" + dbs6.getinfo(1);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb22.setImageResource(temp);
+                hcard6b1.setImageResource(temp);
                 imtemp = "ic_" + dbs6.getinfo(2);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb23.setImageResource(temp);
+                hcard6b2.setImageResource(temp);
                 imtemp = "ic_" + dbs6.getinfo(3);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb24.setImageResource(temp);
+                hcard6b3.setImageResource(temp);
                 imtemp = "ic_" + dbs6.getinfo(4);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb25.setImageResource(temp);
+                hcard6b4.setImageResource(temp);
                 imtemp = "ic_" + dbs6.getinfo(5);
                 temp = getResources().getIdentifier(imtemp, "drawable", getPackageName());
-                hcb26.setImageResource(temp);
+                hcard6b5.setImageResource(temp);
             }
         } catch (Exception e) {
 
@@ -3083,36 +3324,6 @@ public class MainA extends AppCompatActivity {
         dialog.show();
     }
 
-    public void openPicture(int workout) {
-
-        final Dialog dialog = new Dialog(this); // Context, this, etc.
-
-        dialog.setContentView(R.layout.pictures);
-        picture1 = (ImageView) dialog.findViewById(R.id.imageView6);
-        int temp;
-        temp = getResources().getIdentifier("ab1", "drawable", getPackageName());
-        if(workout == 1) {
-            temp = getResources().getIdentifier("ab1", "drawable", getPackageName());
-        }else if(workout == 2) {
-            temp = getResources().getIdentifier("ab2", "drawable", getPackageName());
-        }else if(workout == 3) {
-            temp = getResources().getIdentifier("ab3", "drawable", getPackageName());
-        }else if(workout == 4) {
-            temp = getResources().getIdentifier("ab4", "drawable", getPackageName());
-        }else if(workout == 5) {
-            temp = getResources().getIdentifier("ab5", "drawable", getPackageName());
-        }else if(workout == 6) {
-            temp = getResources().getIdentifier("ab6", "drawable", getPackageName());
-        }else if(workout == 7) {
-            temp = getResources().getIdentifier("ab7", "drawable", getPackageName());
-        }else if(workout == 8) {
-            temp = getResources().getIdentifier("ab8", "drawable", getPackageName());
-        }else if(workout == 9) {
-            temp = getResources().getIdentifier("ab9", "drawable", getPackageName());
-        }
-        picture1.setImageResource(temp);
-            dialog.show();
-    }
 
     private void updatedb() {
         if (dbbb == 1 && dbb == 1) {
@@ -3963,5 +4174,90 @@ public class MainA extends AppCompatActivity {
             }
         }
         return false;
+*/
+    }
+
+    public void openPicture(int workout) {
+
+        final Dialog dialog = new Dialog(this); // Context, this, etc.
+
+        dialog.setContentView(R.layout.pictures);
+        picture1 = (ImageView) dialog.findViewById(R.id.imageView6);
+        int temp;
+        temp = getResources().getIdentifier("ab1", "drawable", getPackageName());
+        if (workout == 1) {
+            temp = getResources().getIdentifier("ab1", "drawable", getPackageName());
+        } else if (workout == 2) {
+            temp = getResources().getIdentifier("ab2", "drawable", getPackageName());
+        } else if (workout == 3) {
+            temp = getResources().getIdentifier("ab3", "drawable", getPackageName());
+        } else if (workout == 4) {
+            temp = getResources().getIdentifier("ab4", "drawable", getPackageName());
+        } else if (workout == 5) {
+            temp = getResources().getIdentifier("ab5", "drawable", getPackageName());
+        } else if (workout == 6) {
+            temp = getResources().getIdentifier("ab6", "drawable", getPackageName());
+        } else if (workout == 7) {
+            temp = getResources().getIdentifier("ab7", "drawable", getPackageName());
+        } else if (workout == 8) {
+            temp = getResources().getIdentifier("ab8", "drawable", getPackageName());
+        } else if (workout == 9) {
+            temp = getResources().getIdentifier("ab9", "drawable", getPackageName());
+        }
+        picture1.setImageResource(temp);
+        dialog.show();
+    }
+
+    public void updatecards() {
+
+        ct1.setText("" + excer[0][0]);
+        ct3.setText("" + uom);
+        ct4.setText("" + excer[0][2]);
+        ct5.setText("" + excer[1][0]);
+        ct7.setText("" + uom);
+        ct8.setText("" + excer[1][2]);
+        ct9.setText("" + excer[2][0]);
+        ct11.setText("" + uom);
+        ct12.setText("" + excer[2][2]);
+        ct13.setText("" + excer[3][0]);
+        ct15.setText("" + uom);
+        ct16.setText("" + excer[3][2]);
+        ct17.setText("" + excer[4][0]);
+        ct19.setText("" + uom);
+        ct20.setText("" + excer[4][2]);
+        ct21.setText("" + excer[5][0]);
+        ct23.setText("" + uom);
+        ct24.setText("" + excer[5][2]);
+
+    }
+
+
+    private void startTimer() {
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+            }
+        }.start();
+
+        mTimerRunning = true;
+    }
+
+    private void updateCountDownText() {
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 90;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
+
+        mTextViewCountDown.setText(timeLeftFormatted);
+        if (seconds == 0) {
+            mTimerRunning = false;
+            break;
+        }
     }
 }

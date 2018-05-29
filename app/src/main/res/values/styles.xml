@@ -9,4 +9,10 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="FacebookLoginButton">
+        <item name="android:background">@drawable/facebook</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
 </resources>

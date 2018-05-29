@@ -1,19 +1,11 @@
 package kesavan.studios.kesav.pushpull;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
-import java.io.File;
 import java.util.Random;
 
 public class SplashScreen extends AppCompatActivity {
@@ -27,13 +19,14 @@ public class SplashScreen extends AppCompatActivity {
     private DBpullb db5;
     private DBlegsb db6;
     private int askUOM = 0;
+    private final int SPLASH_DISPLAY_LENGTH = 300;
+    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.splash);
+
         db = new DBmain(this);
         dbold = new DBmainold(this);
         db1 = new DBpusha(this);
@@ -44,11 +37,15 @@ public class SplashScreen extends AppCompatActivity {
         db6 = new DBlegsb(this);
         dbrating2 = new DBrating(this);
 
+        layout = (RelativeLayout) findViewById(R.id.splashlayout1);
+
+
+
         Thread myThread = new Thread() {
             @Override
             public void run() {
                 try {
-
+/*
                     try {
                         db1.getinfo(1);
                     }catch (Exception e){
@@ -58,19 +55,33 @@ public class SplashScreen extends AppCompatActivity {
                         db4.update(6, 8, 8, 6, 6, 6, "");
                         db5.update(6, 8, 8, 6, 6, 6, "");
                         db6.update(6, 8, 8, 6, 6, 6, "");
-                    }
+                    }*/
 
                     Random rand = new Random();
-                    sleep(rand.nextInt(1000) + 500);
+                    sleep(0);
                     Context context = getApplicationContext();
-                    File dbFile = context.getDatabasePath("dbmainuser.db");
+
+                    /*File dbFile = context.getDatabasePath("dbmainuser.db");
 
                     if( String.valueOf(dbFile.exists()).equals("true")){
                         db.addUser(dbold.getfullname(),dbold.getgender(),dbold.getage(), dbold.cweight(), dbold.height(), dbold.getday(),dbold.geturl(),null);
                         dbFile.delete();
-                        Intent intent = new Intent(context, signin.class);
-                        finish();
-                        startActivity(intent);
+
+
+                        new Handler().postDelayed(new Runnable(){
+                            @Override
+                            public void run() {
+                         Create an Intent that will start the Menu-Activity.
+
+                                Intent mainIntent = new Intent(SplashScreen.this,signin.class);
+                                startActivity(mainIntent);
+                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            }
+                        }, SPLASH_DISPLAY_LENGTH);
+
+                       // Intent intent = new Intent(context, signin.class);
+                       // finish();
+                       // startActivity(intent);
                     }
 
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -84,20 +95,43 @@ public class SplashScreen extends AppCompatActivity {
                     }catch (Exception e){
                         dbrating2.update(15,0,0);
                     }
-                    if (!previouslyStarted) {
-                        Intent intent = new Intent(context, signin.class);
-                        finish();
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(getApplicationContext(), MainA.class);
-                        finish();
-                        startActivity(intent);
-                    }
 
+
+                    if (!previouslyStarted) {
+                        new Handler().postDelayed(new Runnable(){
+                            @Override
+                            public void run() {
+                         Create an Intent that will start the Menu-Activity.
+
+                                Intent mainIntent = new Intent(SplashScreen.this,signin.class);
+                                startActivity(mainIntent);
+                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            }
+                        }, SPLASH_DISPLAY_LENGTH);
+
+                    } else {
+                        new Handler().postDelayed(new Runnable(){
+                            @Override
+                            public void run() {
+                         Create an Intent that will start the Menu-Activity.
+
+                                Intent mainIntent = new Intent(SplashScreen.this,MainA.class);
+                                startActivity(mainIntent);
+                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            }
+                        }, SPLASH_DISPLAY_LENGTH);
+    
+                    }
+*/
+                    Intent mainIntent = new Intent(SplashScreen.this, signin.class);
+                    startActivity(mainIntent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+
             }
         };
         myThread.start();

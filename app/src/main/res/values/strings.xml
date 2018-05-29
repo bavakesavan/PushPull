@@ -25,4 +25,6 @@
     <color name="tc6">#757575</color>
     <color name="sec">#af3067</color>
     <color name="circlecolor">#af3067</color>
+    <string name="facebook_app_id">142427879758749</string>
+    <string name="fb_login_protocol_scheme">fb142427879758749</string>
 </resources>

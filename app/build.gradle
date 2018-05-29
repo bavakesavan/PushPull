@@ -3,20 +3,19 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'fragmentkeystore'
-            keyPassword 'pushPULL1996'
+            keyAlias 'key0'
+            keyPassword 'macLAB1996'
             storeFile file('C:/Users/kesav/Desktop/fragment/fragment.jks')
-            storePassword 'pushPULL1996'
+            storePassword 'macLAB1996'
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 27
     defaultConfig {
         applicationId "kesavan.studios.kesav.pushpull"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 40
-        versionName "3.3.1"
+        versionCode 43
+        versionName "3.3.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -36,23 +35,47 @@ repositories {
 
 }
 
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        //add these two lines
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
+    }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:cardview-v7:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
     compile 'com.github.markushi:circlebutton:1.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.5'
     compile 'com.github.sundeepk:compact-calendar-view:2.0.0'
     compile 'com.jjoe64:graphview:4.2.1'
     compile 'com.roughike:bottom-bar:2.1.1'
-    compile 'com.google.android.gms:play-services-auth:11.0.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.facebook.android:facebook-login:[4,5)'
+
+
+    //this is added when we integrated firebase
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    compile 'com.google.firebase:firebase-auth:11.8.0'
+    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile 'com.google.firebase:firebase-crash:11.8.0'
+    compile 'com.google.firebase:firebase-appindexing:11.8.0'
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile 'com.google.firebase:firebase-messaging:11.8.0'
+    compile 'com.google.firebase:firebase-invites:11.8.0'
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }
 apply plugin: 'com.google.gms.google-services'
