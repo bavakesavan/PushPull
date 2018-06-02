@@ -1,0 +1,18 @@
+[
+  {
+    "outputType": {
+      "type": "APK"
+    },
+    "apkInfo": {
+      "type": "MAIN",
+      "splits": [],
+      "versionCode": 43
+    },
+    "path": "app-debug.apk",
+    "properties": {
+      "packageId": "kesavan.studios.kesav.pushpull",
+      "split": "",
+      "minSdkVersion": "21"
+    }
+  }
+]
