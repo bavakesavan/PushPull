@@ -97,11 +97,11 @@ public class MainA extends AppCompatActivity {
     public RelativeLayout todayCard, pushACard, pushBCard, pullACard, pullBCard, legsACard, legsBCard, profileCard, absCard, settingCard, historyCard;
     public ScrollView sc1, sc2, sc3;
     public CardView ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, calenderCard;
-
+    public NumberPicker card1Weight;
 
     private static final long START_TIME_IN_MILLIS = 900000;
-    private TextView mTextViewCountDown;
-    private RelativeLayout mButtonStartPause;
+    private TextView mTextViewCountDown, card1WeightUnits, card1WeightText;
+    private RelativeLayout mButtonStartPause, card1wieghtlayout;
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -238,6 +238,24 @@ public class MainA extends AppCompatActivity {
         ct22 = findViewById(R.id.card6Weight);
         ct23 = findViewById(R.id.card6WeightUnits);
         ct24 = findViewById(R.id.card6Time);
+        card1WeightUnits = findViewById(R.id.card1WeightUnits);
+        card1WeightText = findViewById(R.id.card1Weight);
+        card1wieghtlayout = findViewById(R.id.card1wieghtlayout);
+
+        card1Weight = findViewById(R.id.card1Picker);
+
+        card1Weight.setMinValue(10);
+        card1Weight.setMaxValue(400);
+        card1Weight.setValue(50);
+
+        card1wieghtlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                card1WeightUnits.setVisibility(View.INVISIBLE);
+                card1WeightText.setVisibility(View.INVISIBLE);
+                card1Weight.setVisibility(View.VISIBLE);
+            }
+        });
 
         todayCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -4251,13 +4269,12 @@ public class MainA extends AppCompatActivity {
 
     private void updateCountDownText() {
         int seconds = (int) (mTimeLeftInMillis / 1000) % 90;
+        if (seconds == 0) {
+            mTimerRunning = false;
+        }
 
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
 
         mTextViewCountDown.setText(timeLeftFormatted);
-        if (seconds == 0) {
-            mTimerRunning = false;
-            break;
-        }
     }
 }

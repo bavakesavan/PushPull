@@ -290,7 +290,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -322,19 +321,13 @@
                                 android:textSize="15dp" />
 
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:id="@+id/card1TimeLayoutbkgd"
-                                android:background="#FFF" />
-
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:id="@+id/card1wieghtlayout"
                             android:background="#d68357">
 
                             <TextView
@@ -357,6 +350,17 @@
                                 android:textColor="@color/haiti"
                                 android:text=" lbs"
                                 android:textSize="15dp" />
+
+
+                            <NumberPicker
+                                android:id="@+id/card1Picker"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/haiti"
+                                android:theme="@style/NumberPickerText"
+                                android:visibility="invisible" />
 
                         </RelativeLayout>
                     </LinearLayout>
