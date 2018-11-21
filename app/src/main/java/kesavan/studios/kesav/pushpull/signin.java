@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -48,13 +49,13 @@ public class signin extends AppCompatActivity {
 
     Button btn;
     private EditText usr, gdr, ag, weig, heigh, sta;
-    /* private DBmain db;
-     private DBpusha db1;
-     private DBpulla db2;
-     private DBlegsa db3;
-     private DBpushb db4;
-     private DBpullb db5;
-     private DBlegsb db6;*/
+    private DBmain db;
+    private DBpusha db1;
+    private DBpulla db2;
+    private DBlegsa db3;
+    private DBpushb db4;
+    private DBpullb db5;
+    private DBlegsb db6;
     private String name, gender, age, weight, height,startd,url,heightseek = "50",  units = "lbs";
     private RelativeLayout relative1, relative2,relative3,relative4,relative5,relative6,relative7;
     private NumberPicker num1, num2, num3;
@@ -87,13 +88,13 @@ public class signin extends AppCompatActivity {
         midtoup = AnimationUtils.loadAnimation(this, R.anim.midtoup);
         midtoupfade = AnimationUtils.loadAnimation(this, R.anim.midtoupfade);
         fadeupto = AnimationUtils.loadAnimation(this, R.anim.fadeup);
-       /* db = new DBmain(this);
+        db = new DBmain(this);
         db1 = new DBpusha(this);
         db2 = new DBpulla(this);
         db3 = new DBlegsa(this);
         db4 = new DBpushb(this);
         db5 = new DBpullb(this);
-        db6 = new DBlegsb(this);*/
+        db6 = new DBlegsb(this);
         usr = (EditText) findViewById(R.id.usr);
         gdr = (EditText) findViewById(R.id.psh);
         ag = (EditText) findViewById(R.id.age);
@@ -182,7 +183,7 @@ public class signin extends AppCompatActivity {
 
         prefs = getSharedPreferences("com.mycompany.myAppName", MODE_PRIVATE);
 
-    /*    male.setOnClickListener(new View.OnClickListener() {
+        male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gender="0";
@@ -308,7 +309,7 @@ public class signin extends AppCompatActivity {
         num3.setMinValue(0);
         num3.setMaxValue(6);
         num3.setDisplayedValues( new String[] { "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" } );
-*/
+
     }
 
     // [START onactivityresult]
@@ -353,7 +354,8 @@ public class signin extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //   updateUI(user);
-                            goMainScreen();
+                            //goMainScreen();
+                            genderchoose();
                             Toast.makeText(context, "User: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
                         } else {
@@ -386,7 +388,6 @@ public class signin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-
             goMainScreen();
         }
     }
@@ -417,8 +418,8 @@ public class signin extends AppCompatActivity {
                 });
     }
 
-    /*
-        private void genderchoose(){
+
+    private void genderchoose(){
 
             page=2;
             relative1.setVisibility(View.GONE);
@@ -540,7 +541,7 @@ public class signin extends AppCompatActivity {
         private void createdb2(){
             db.addUser(db.getfullname(),db.getgender(),db.getage(), db.cweight(), db.height(), db.getday(),db.geturl(),""+  uom.getText());
         }
-    */
+
     private void goMainScreen() {
         new Handler().postDelayed(new Runnable() {
             @Override

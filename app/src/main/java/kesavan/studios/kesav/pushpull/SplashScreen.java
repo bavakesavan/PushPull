@@ -2,10 +2,14 @@ package kesavan.studios.kesav.pushpull;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
+import java.io.File;
 import java.util.Random;
 
 public class SplashScreen extends AppCompatActivity {
@@ -45,7 +49,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-/*
+
                     try {
                         db1.getinfo(1);
                     }catch (Exception e){
@@ -55,13 +59,13 @@ public class SplashScreen extends AppCompatActivity {
                         db4.update(6, 8, 8, 6, 6, 6, "");
                         db5.update(6, 8, 8, 6, 6, 6, "");
                         db6.update(6, 8, 8, 6, 6, 6, "");
-                    }*/
+                    }
 
                     Random rand = new Random();
                     sleep(0);
                     Context context = getApplicationContext();
 
-                    /*File dbFile = context.getDatabasePath("dbmainuser.db");
+                    File dbFile = context.getDatabasePath("dbmainuser.db");
 
                     if( String.valueOf(dbFile.exists()).equals("true")){
                         db.addUser(dbold.getfullname(),dbold.getgender(),dbold.getage(), dbold.cweight(), dbold.height(), dbold.getday(),dbold.geturl(),null);
@@ -71,7 +75,7 @@ public class SplashScreen extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable(){
                             @Override
                             public void run() {
-                         Create an Intent that will start the Menu-Activity.
+                                //Create an Intent that will start the Menu-Activity.
 
                                 Intent mainIntent = new Intent(SplashScreen.this,signin.class);
                                 startActivity(mainIntent);
@@ -101,7 +105,7 @@ public class SplashScreen extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable(){
                             @Override
                             public void run() {
-                         Create an Intent that will start the Menu-Activity.
+                                //  Create an Intent that will start the Menu-Activity.
 
                                 Intent mainIntent = new Intent(SplashScreen.this,signin.class);
                                 startActivity(mainIntent);
@@ -113,7 +117,7 @@ public class SplashScreen extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable(){
                             @Override
                             public void run() {
-                         Create an Intent that will start the Menu-Activity.
+                                //  Create an Intent that will start the Menu-Activity.
 
                                 Intent mainIntent = new Intent(SplashScreen.this,MainA.class);
                                 startActivity(mainIntent);
@@ -122,7 +126,7 @@ public class SplashScreen extends AppCompatActivity {
                         }, SPLASH_DISPLAY_LENGTH);
     
                     }
-*/
+
                     Intent mainIntent = new Intent(SplashScreen.this, signin.class);
                     startActivity(mainIntent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

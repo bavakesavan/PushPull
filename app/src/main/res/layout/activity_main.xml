@@ -35,7 +35,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textVie1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -60,10 +59,28 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardVw"
-
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="top">
+
+                    <TextView
+                        android:id="@+id/textVie1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="45dp"
+                        android:text="Push A"
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView"
@@ -71,9 +88,9 @@
                 android:visibility="gone"
                 android:layout_height="375dp"
                 android:layout_below="@+id/cardVw"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -254,22 +271,25 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/cardVw"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card1Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -277,27 +297,163 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card1Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
                         android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card1wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card1Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <NumberPicker
+                            android:id="@+id/card1Picker"
+                            android:layout_width="60dp"
+                            android:layout_height="150dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/card1WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card1Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card1Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:id="@+id/card1buttonLayout"
+                            android:background="#277d94">
+
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card1b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:src="@drawable/ic_3"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card1b4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toRightOf="@+id/card1b3"
+                                android:src="@drawable/ic_3"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card1b5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toRightOf="@+id/card1b4"
+                                android:src="@drawable/ic_3"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card1b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card1b3"
+                                android:src="@drawable/ic_3"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card1b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card1b2"
+                                android:src="@drawable/ic_3"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
                             android:id="@+id/card1TimeLayout"
-                            android:background="#6b6fb6">
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card1Time"
@@ -305,9 +461,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card1TimeUnits"
@@ -315,136 +471,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card1Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:id="@+id/card1wieghtlayout"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card1Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card1WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card1Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-
-                            <NumberPicker
-                                android:id="@+id/card1Picker"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:theme="@style/NumberPickerText"
-                                android:visibility="invisible" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true" />
 
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card1b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_3"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card1b4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card1b3"
-                        android:src="@drawable/ic_3"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card1b5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card1b4"
-                        android:src="@drawable/ic_3"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card1b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card1b3"
-                        android:src="@drawable/ic_3"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card1b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card1b2"
-                        android:src="@drawable/ic_3"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -452,22 +490,25 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card2"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/card1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card2Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -475,27 +516,134 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card2Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card2wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card2Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/card2WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card2Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+
+                        <NumberPicker
+                            android:id="@+id/card2Picker"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/haiti"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card2Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#6b6fb6">
+                            android:id="@+id/card2buttonLayout"
+                            android:background="#277d94">
+
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card2b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card2b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card2b3"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card2b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card2b2"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:id="@+id/card2TimeLayout"
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card2Time"
@@ -503,9 +651,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card2TimeUnits"
@@ -513,112 +661,44 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card2Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card2Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card2WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card2Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
 
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card2b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card2b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card2b3"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card2b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card2b2"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
                 android:id="@+id/card3"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/card2"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card3Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -626,27 +706,134 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card3Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card3wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card3Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/card3WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card3Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+
+                        <NumberPicker
+                            android:id="@+id/card3Picker"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/haiti"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card3Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#6b6fb6">
+                            android:id="@+id/card3buttonLayout"
+                            android:background="#277d94">
+
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card3b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card3b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card3b3"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card3b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:layout_toLeftOf="@+id/card3b2"
+                                android:src="@drawable/ic_8"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:id="@+id/card3TimeLayout"
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card3Time"
@@ -654,9 +841,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card3TimeUnits"
@@ -664,88 +851,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card3Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card3Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card3WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card3Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
 
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card3b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card3b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card3b3"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card3b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card3b2"
-                        android:src="@drawable/ic_8"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -753,22 +870,25 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card4"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/card3"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card4Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -776,27 +896,164 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card4Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card4wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card4Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/card4WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card4Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+
+                        <NumberPicker
+                            android:id="@+id/card4Picker"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/haiti"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card4Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#6b6fb6">
+                            android:id="@+id/card4buttonLayout"
+                            android:background="#277d94">
+
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card4b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card4b4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card4b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card4b5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card4b4"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card4b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card4b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card4b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card4b2"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:id="@+id/card4TimeLayout"
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card4Time"
@@ -804,9 +1061,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card4TimeUnits"
@@ -814,118 +1071,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card4Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card4Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card4WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card4Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
 
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card4b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card4b4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card4b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card4b5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card4b4"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card4b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card4b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card4b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card4b2"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -933,22 +1090,25 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card5"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/card4"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card5Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -956,27 +1116,163 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card5Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card5wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card5Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/card5WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card5Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+
+                        <NumberPicker
+                            android:id="@+id/card5Picker"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/haiti"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card5Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#6b6fb6">
+                            android:id="@+id/card5buttonLayout"
+                            android:background="#277d94">
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card5b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card5b4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card5b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card5b5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card5b4"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card5b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card5b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card5b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card5b2"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:id="@+id/card5TimeLayout"
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card5Time"
@@ -984,9 +1280,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card5TimeUnits"
@@ -994,118 +1290,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card5Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card5Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card5WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card5Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
 
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card5b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card5b4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card5b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card5b5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card5b4"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card5b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card5b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card5b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card5b2"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -1113,23 +1309,25 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card6"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="330dp"
                 android:layout_below="@+id/card5"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                design:cardElevation="8dp"
+                design:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/haiti"
+                    android:background="#37474F"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/card6Img"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/pusha1"
+                        android:layout_marginTop="90dp"
                         android:layout_centerHorizontal="true" />
 
                     <TextView
@@ -1137,27 +1335,164 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Flat Barbell Bench Press"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/card6Img"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
                         android:textColor="@color/bc0"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/card6wieghtlayout"
+                        android:background="#d68357">
+
+                        <RelativeLayout
+                            android:layout_width="96dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="#37474F" />
+
+                        <TextView
+                            android:id="@+id/card6Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#fff"
+                            android:text="35"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/card6WeightUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/card6Weight"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="7dp"
+                            android:textColor="#fff"
+                            android:text=" lbs"
+                            android:textSize="15dp" />
+
+
+                        <NumberPicker
+                            android:id="@+id/card6Picker"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/haiti"
+                            android:theme="@style/NumberPickerText"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/card6Lin"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:background="@color/bc1"
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#6b6fb6">
+                            android:id="@+id/card6buttonLayout"
+                            android:background="#277d94">
+
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card6b3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card6b4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card6b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card6b5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toRightOf="@+id/card6b4"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card6b2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card6b3"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                            <at.markushi.ui.CircleButton
+                                android:id="@+id/card6b1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:layout_toLeftOf="@+id/card6b2"
+                                android:src="@drawable/ic_10"
+                                design:cb_color="@color/tc4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:id="@+id/card6TimeLayout"
+                            android:background="@color/haiti">
 
                             <TextView
                                 android:id="@+id/card6Time"
@@ -1165,9 +1500,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
+                                android:textColor="#fff"
                                 android:text="35"
-                                android:textSize="35dp" />
+                                android:textSize="22dp" />
 
                             <TextView
                                 android:id="@+id/card6TimeUnits"
@@ -1175,118 +1510,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/card6Time"
                                 android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
+                                android:paddingTop="12dp"
+                                android:textColor="#fff"
                                 android:text=" s"
                                 android:textSize="15dp" />
 
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#d68357">
 
-                            <TextView
-                                android:id="@+id/card6Weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/haiti"
-                                android:text="35"
-                                android:textSize="35dp" />
-
-                            <TextView
-                                android:id="@+id/card6WeightUnits"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/card6Weight"
-                                android:layout_centerVertical="true"
-                                android:paddingTop="15dp"
-                                android:textColor="@color/haiti"
-                                android:text=" lbs"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
                     </LinearLayout>
 
 
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card6b3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card6b4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card6b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card6b5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toRightOf="@+id/card6b4"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card6b2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card6b3"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
-
-                    <at.markushi.ui.CircleButton
-                        android:id="@+id/card6b1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:layout_toLeftOf="@+id/card6b2"
-                        android:src="@drawable/ic_10"
-                        design:cb_color="@color/tc4" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -3866,58 +4101,53 @@
             </LinearLayout>
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:layout_height="200dp"
+                    android:gravity="top">
 
-                    <!--android.support.v7.widget.CardView
-                        android:id="@+id/cardView13"
-                        android:layout_width="0dp"
-                        android:layout_height="115dp"
-                        android:layout_below="@id/cardView12"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/bc4">
+                    <ImageView
+                        android:id="@+id/icon1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="55dp"
+                        app:srcCompat="@mipmap/ic4" />
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/bc4">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/icon1"
+                        android:text="Push Pull Legs"
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
 
-                            <TextView
-                                android:id="@+id/textView42"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="20dp"
-                                android:text="Push A"
-                                android:textColor="@color/tc2"
-                                android:textSize="18dp" />
+                </RelativeLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                        </RelativeLayout>
-
-                    </android.support.v7.widget.CardView-->
-
-
-                    <RelativeLayout
+                <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                    android:layout_height="130dp"
                         android:layout_marginBottom="15dp"
                         android:id="@+id/pushAcard"
                         android:layout_marginLeft="45dp"
                         android:layout_marginRight="15dp"
-                        android:layout_marginTop="100dp"
+                    android:layout_marginTop="50dp"
                         android:layout_weight="1"
                         android:background="@color/bc4">
 
@@ -3925,7 +4155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="80dp"
+                            android:layout_marginTop="90dp"
                             android:text="Push A"
                             android:textColor="@color/tc2"
                             android:textSize="18dp" />
@@ -3935,12 +4165,12 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="130dp"
                         android:layout_marginBottom="15dp"
                         android:id="@+id/pushBcard"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="45dp"
-                        android:layout_marginTop="100dp"
+                        android:layout_marginTop="50dp"
                         android:layout_weight="1"
                         android:background="@color/bc4">
 
@@ -3948,70 +4178,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="80dp"
+                            android:layout_marginTop="90dp"
                             android:text="Push B"
                             android:textColor="@color/tc2"
                             android:textSize="18dp" />
 
                     </RelativeLayout>
-                    <!--android.support.v7.widget.CardView
-                        android:id="@+id/cardView14"
-                        android:layout_width="0dp"
-                        android:layout_height="115dp"
-                        android:layout_weight="1"
-                        android:background="@color/bc4">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/bc4">
-
-                            <TextView
-                                android:id="@+id/textView43"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="20dp"
-                                android:text="Pull A"
-                                android:textColor="@color/tc2"
-                                android:textSize="18dp" />
-
-
-                        </RelativeLayout>
-
-                    </android.support.v7.widget.CardView-->
-
-                    <!--android.support.v7.widget.CardView-
-                        android:id="@+id/cardView15"
-                        android:layout_width="0dp"
-                        android:layout_height="115dp"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/bc4">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/bc4">
-
-                            <TextView
-                                android:id="@+id/textView44"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="20dp"
-                                android:text="Legs A"
-                                android:textColor="@color/tc2"
-                                android:textSize="18dp" />
-
-
-                        </RelativeLayout>
-
-                    </android.support.v7.widget.CardView-->
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -4020,47 +4192,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!--LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cardView16"
-                        android:layout_width="0dp"
-                        android:layout_height="115dp"
-                        android:layout_below="@id/cardView13"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_weight="1"
-                        android:background="@color/bc4">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/bc4">
-
-                            <TextView
-                                android:id="@+id/textView45"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="20dp"
-                                android:text="Push B"
-                                android:textColor="@color/tc2"
-                                android:textSize="18dp" />
-
-
-                        </RelativeLayout>
-
-                    </android.support.v7.widget.CardView-->
-
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="45dp"
                     android:id="@+id/pullAcard"
@@ -4073,7 +4207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Pull A"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4083,7 +4217,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/pullBcard"
                     android:layout_marginLeft="15dp"
@@ -4096,78 +4230,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Pull B"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
 
                 </RelativeLayout>
-                <!--android.support.v7.widget.CardView
-                    android:id="@+id/cardView17"
-                    android:layout_width="0dp"
-                    android:layout_height="115dp"
-                    android:layout_below="@id/cardView13"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_toRightOf="@id/cardView16"
-                    android:layout_weight="1"
-                    android:background="@color/bc4">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bc4">
-
-                        <TextView
-                            android:id="@+id/textView46"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="20dp"
-                            android:text="Pull B"
-                            android:textColor="@color/tc2"
-                            android:textSize="18dp" />
-
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardView18"
-                    android:layout_width="0dp"
-                    android:layout_height="115dp"
-                    android:layout_below="@id/cardView13"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_toRightOf="@id/cardView17"
-                    android:layout_weight="1"
-                    android:background="@color/bc4">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bc4">
-
-                        <TextView
-                            android:id="@+id/textView50"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="20dp"
-                            android:text="Legs B"
-                            android:textColor="@color/tc2"
-                            android:textSize="18dp" />
-
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-
-            </LinearLayout-->
             </LinearLayout>
 
             <LinearLayout
@@ -4177,7 +4245,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/legsAcard"
                     android:layout_marginLeft="45dp"
@@ -4190,7 +4258,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Legs A"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4199,7 +4267,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/legsBcard"
                     android:layout_marginLeft="15dp"
@@ -4212,7 +4280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Legs B"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4227,7 +4295,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/profileCard"
                     android:layout_marginLeft="45dp"
@@ -4240,7 +4308,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Profile"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4249,7 +4317,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/abscard"
                     android:layout_marginLeft="15dp"
@@ -4262,7 +4330,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Abs"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4278,7 +4346,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/historycard"
                     android:layout_marginLeft="45dp"
@@ -4291,7 +4359,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="History"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4300,7 +4368,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginBottom="15dp"
                     android:id="@+id/settingsCard"
                     android:layout_marginLeft="15dp"
@@ -4313,7 +4381,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:text="Settings"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
@@ -4324,32 +4392,14 @@
         </GridLayout>
     </ScrollView>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="top">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Home"
-            android:textColor="#ffffff"
-            android:textSize="18dp" />
-
-    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/ScrollView03"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="46dp"
         android:background="@color/tc1"
         android:scrollbars="none"
         android:visibility="invisible">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -4359,7 +4409,7 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/Profile"
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
+                android:layout_height="400dp"
                 android:layout_alignParentStart="true"
                 android:background="@color/bc4">
 
@@ -4368,51 +4418,113 @@
                     android:layout_height="match_parent"
                     android:background="@color/bc4">
 
-                    <ImageView
-                        android:id="@+id/imgProfilePic"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="55dp" />
-
-
                     <TextView
-                        android:id="@+id/profile1"
-                        android:layout_width="250dp"
-                        android:layout_height="40dp"
-                        android:layout_alignTop="@+id/imgProfilePic"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@+id/imgProfilePic"
-                        android:text="Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:paddingTop="35dp"
+                        android:text="Profile"
                         android:textColor="@color/tc2"
                         android:textSize="18dp" />
 
-                    <Button
-                        android:id="@+id/editprof"
-                        android:layout_width="210dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/profile1"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@+id/imgProfilePic"
-                        android:text="Edit Profile" />
+                    <ImageView
+                        android:id="@+id/imgProfilePic"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/haiti"
+                        android:paddingBottom="200dp" />
 
-                    <Button
-                        android:id="@+id/logout"
-                        android:layout_width="95dp"
+                    <TextView
+                        android:id="@+id/profile1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/editprof"
-                        android:layout_toRightOf="@+id/editprof"
-                        android:text="Logout"
-                        android:visibility="invisible" />
+                        android:layout_below="@+id/imgProfilePic"
+                        android:layout_centerHorizontal="true"
+                        android:paddingTop="25dp"
+                        android:text="Name"
+                        android:textColor="@color/tc2"
+                        android:textSize="25dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bc4"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        android:weightSum="2">
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/pscard"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+                            <RelativeLayout
+                                android:id="@+id/relpush"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/bc3">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/bc5" />
+
+                                <TextView
+                                    android:id="@+id/wtex1t"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="My body "
+                                    android:textColor="@color/tc2" />
+
+                            </RelativeLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/plcard"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+                            <RelativeLayout
+                                android:id="@+id/relpull"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/bc4">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/bc5" />
+
+                                <TextView
+                                    android:id="@+id/b1text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="Preferences"
+                                    android:textColor="@color/tc2" />
+
+                            </RelativeLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
 
 
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <!--android.support.v7.widget.CardView
                 android:id="@+id/weightcard"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
@@ -4670,102 +4782,7 @@
                         </android.support.v7.widget.CardView>
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:background="@color/bc4"
-                        android:orientation="horizontal"
-                        android:visibility="visible"
-                        android:weightSum="3">
 
-                        <android.support.v7.widget.CardView
-                            android:id="@+id/pscard"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1">
-
-                            <RelativeLayout
-                                android:id="@+id/relpush"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/bc3">
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="@color/bc5" />
-                                <TextView
-                                    android:id="@+id/wtex1t"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_centerVertical="true"
-                                    android:text="Push - A "
-                                    android:textColor="@color/tc2" />
-
-                            </RelativeLayout>
-
-                        </android.support.v7.widget.CardView>
-
-                        <android.support.v7.widget.CardView
-                            android:id="@+id/plcard"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1">
-
-                            <RelativeLayout
-                                android:id="@+id/relpull"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/bc4">
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="@color/bc5" />
-                                <TextView
-                                    android:id="@+id/b1text"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_centerVertical="true"
-                                    android:text="Pull - A"
-                                    android:textColor="@color/tc2" />
-
-                            </RelativeLayout>
-
-                        </android.support.v7.widget.CardView>
-
-                        <android.support.v7.widget.CardView
-                            android:id="@+id/lcard"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1">
-
-                            <RelativeLayout
-                                android:id="@+id/relleg"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/bc4">
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="@color/bc5" />
-                                <TextView
-                                    android:id="@+id/ht1ext"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_centerVertical="true"
-                                    android:text="Legs - A"
-                                    android:textColor="@color/tc2" />
-                            </RelativeLayout>
-
-                        </android.support.v7.widget.CardView>
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -4858,7 +4875,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Bench Press"
                 android:textColor="@color/bc4"
-                android:textSize="14dp" />
+                android:textSize="14dp" /-->
 
         </RelativeLayout>
 
