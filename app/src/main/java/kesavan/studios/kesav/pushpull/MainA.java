@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -20,7 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -31,6 +37,7 @@ import java.util.Locale;
 
 import at.markushi.ui.CircleButton;
 
+@IgnoreExtraProperties
 public class MainA extends AppCompatActivity {
 
     FirebaseAuth mAuth;
@@ -308,6 +315,7 @@ public class MainA extends AppCompatActivity {
     private long mTimeLeftInMillis6 = START_TIME_IN_MILLIS;
 
     private static final String TAG = "GoogleActivity";
+    // private IMainActivity mIMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -737,6 +745,9 @@ public class MainA extends AppCompatActivity {
 
         Context context = getApplicationContext();
         Toast.makeText(context, "Day selected is " + dayselected, Toast.LENGTH_SHORT).show();
+        //  createNewProfile();
+        //mIMainActivity.createNewProfile(15,"Male",180,"lbs",190);
+
 /*
                 ct25 = (TextView) findViewById(R.id.textView2);
                 ct25.setText("Routine start day: " + dayselec);
@@ -4820,4 +4831,37 @@ public class MainA extends AppCompatActivity {
             mTextViewCountDown6.setText("15");
         }
     }
+
+    public void createNewProfile() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference newProfile = db.collection("Profiles")
+                .document();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Profile profile = new Profile();
+        profile.setAge(15);
+        profile.setGender("Male");
+        profile.setHeight(180);
+        profile.setUnits("lbs");
+        profile.setWeight(240);
+        profile.setUID(userId);
+        profile.setName(userName);
+        profile.setEmail(userEmail);
+
+        newProfile.set(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Context context = getApplicationContext();
+                if (task.isSuccessful()) {
+                    Toast.makeText(context, "Created new profile", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Failed to create new profile", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
 }

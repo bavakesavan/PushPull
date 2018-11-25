@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +13,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -43,27 +41,23 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.sql.Date;
 
+@IgnoreExtraProperties
 public class signin extends AppCompatActivity {
 
-    Button btn;
-    private EditText usr, gdr, ag, weig, heigh, sta;
-    private DBmain db;
-    private DBpusha db1;
-    private DBpulla db2;
-    private DBlegsa db3;
-    private DBpushb db4;
-    private DBpullb db5;
-    private DBlegsb db6;
+    private @ServerTimestamp
+    Date timestamp;
     private String name, gender, age, weight, height,startd,url,heightseek = "50",  units = "lbs";
-    private RelativeLayout relative1, relative2,relative3,relative4,relative5,relative6,relative7;
+    private RelativeLayout relative1, relative2;
     private NumberPicker num1, num2, num3;
     private static GoogleApiClient googleApiClient;
     private Button next, back, signInButton, facebookButton;
     private SeekBar hbar;
-    private ImageView male, female, origIcon;
-    private TextView intro,high,uom;
+    private ImageView male, female, UserImage, origIcon;
+    private TextView intro, high, uom, UserName;
     private int page = 1,gend = 0 ;
     public static final int SIGN_IN_CODE = 777;
     public static String profileimage = "";
@@ -83,46 +77,24 @@ public class signin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.login);
+
         uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
         downtoup = AnimationUtils.loadAnimation(this, R.anim.downtoup);
         midtoup = AnimationUtils.loadAnimation(this, R.anim.midtoup);
         midtoupfade = AnimationUtils.loadAnimation(this, R.anim.midtoupfade);
         fadeupto = AnimationUtils.loadAnimation(this, R.anim.fadeup);
-        db = new DBmain(this);
-        db1 = new DBpusha(this);
-        db2 = new DBpulla(this);
-        db3 = new DBlegsa(this);
-        db4 = new DBpushb(this);
-        db5 = new DBpullb(this);
-        db6 = new DBlegsb(this);
-        usr = (EditText) findViewById(R.id.usr);
-        gdr = (EditText) findViewById(R.id.psh);
-        ag = (EditText) findViewById(R.id.age);
-        weig = (EditText) findViewById(R.id.weight);
-        heigh = (EditText) findViewById(R.id.height);
-        sta = (EditText) findViewById(R.id.rdate);
+
         relative1 = (RelativeLayout) findViewById(R.id.relative1);
         relative2 = (RelativeLayout) findViewById(R.id.relative2);
-        relative3 = (RelativeLayout) findViewById(R.id.relative3);
-        relative4 = (RelativeLayout) findViewById(R.id.relative4);
-        relative5 = (RelativeLayout) findViewById(R.id.relative5);
-        relative6 = (RelativeLayout) findViewById(R.id.relative6);
-        relative7 = (RelativeLayout) findViewById(R.id.relative55);
-        num1 = (NumberPicker) findViewById(R.id.numberPicker1);
-        num2 = (NumberPicker) findViewById(R.id.numberPicker2);
-        num3 = (NumberPicker) findViewById(R.id.numberPicker3);
         next = (Button) findViewById(R.id.next);
         back = (Button) findViewById(R.id.back);
-        male = (ImageView) findViewById(R.id.imageView3);
-        female = (ImageView) findViewById(R.id.imageView4);
+
+        UserImage = (ImageView) findViewById(R.id.UserImage);
+        UserName = (TextView) findViewById(R.id.User_Name);
+
         origIcon = (ImageView) findViewById(R.id.originIcon);
-        hbar = (SeekBar) findViewById(R.id.heightbar);
         signInButton = (Button) findViewById(R.id.save);
         facebookButton = (Button) findViewById(R.id.login_button1);
-        intro = (TextView) findViewById(R.id.textView3);
-        high = (TextView) findViewById(R.id.textView71);
-        uom = (TextView) findViewById(R.id.textView91);
-        high.setText(0 + "' " + 0 + "\"");
         icon = (LinearLayout) findViewById(R.id.splashlayout);
         icon2 = (LinearLayout) findViewById(R.id.splashlayout2);
 
@@ -135,13 +107,12 @@ public class signin extends AppCompatActivity {
         animation1.setFillBefore(false);
         icon2.startAnimation(animation1);
 
-        // [START config_signin]
-        // Configure Google Sign In
+        Context context = getApplicationContext();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        // [END config_signin]
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -156,7 +127,8 @@ public class signin extends AppCompatActivity {
 
             }
         });
-
+        FirebaseUser user = mAuth.getCurrentUser();
+        Toast.makeText(context, "User: " + user.getDisplayName(), Toast.LENGTH_LONG).show();
 
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = findViewById(R.id.login_button);
@@ -203,116 +175,9 @@ public class signin extends AppCompatActivity {
             }
         });
 
-        uom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(uom.getText() == "kgs"){
-                    uom.setText("lbs");
-                    units = "lbs";
-
-                    num2.setMinValue(40);
-                    num2.setMaxValue(400);
-                    num2.setValue(150);
-
-                }else{
-                    uom.setText("kgs");
-                    units = "kgs";
-                    num2.setMinValue(20);
-                    num2.setMaxValue(200);
-                    num2.setValue(60);
-
-                }
-            }
-        });
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (page == 1){
-                    genderchoose();
-                }else if (page == 2){
-                    agechoose();
-                }else if (page == 3){
-                    uomchoose();
-                }else if (page == 4){
-                    weightchoose();
-                }else if (page == 5){
-                    heightchoose();
-                }else if (page == 6){
-                    routinechoose();
-                }else if (page == 7){
-                    createdb();
-                    goMainScreen();
-                }else if (page == 8){
-                    weightchoose2();
-                }else if (page == 9){
-                    createdb2();
-                    goMainScreen();
-                }
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (page == 3){
-                    genderchoose();
-                }else if (page == 4){
-                    agechoose();
-                }else if (page == 5){
-                    uomchoose();
-                }else if (page == 6){
-                    weightchoose();
-                }else if (page == 7){
-                    heightchoose();
-                }else if (page == 9){
-                    uomchoose2();
-                }
-            }
-        });
-
-        hbar.setProgress(50);
-        high.setText((50/24) + 4 + "' " + (50/2)%12 + "\"");
-        hbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                heightseek=String.valueOf(progress);
-                int inches = progress/2;
-                int feet = inches / 12;
-                int leftover = inches % 12;
-                high.setText(feet + 4 + "' " + leftover + "\"");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-
-        });
-
-        num1.setMinValue(10);
-        num1.setMaxValue(100);
-        num1.setValue(22);
-
-
-        num2.setMinValue(20);
-        num2.setMaxValue(400);
-        num2.setValue(150);
-
-        num3.setMinValue(0);
-        num3.setMaxValue(6);
-        num3.setDisplayedValues( new String[] { "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" } );
 
     }
 
-    // [START onactivityresult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -327,7 +192,6 @@ public class signin extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
-                // [START_EXCLUDE]
                 Context context = getApplicationContext();
                 Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
                 //  updateUI(null);
@@ -336,12 +200,8 @@ public class signin extends AppCompatActivity {
         }
     }
 
-    // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        // [START_EXCLUDE silent]
-        // showProgressDialog();
-        // [END_EXCLUDE]
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -356,7 +216,7 @@ public class signin extends AppCompatActivity {
                             //   updateUI(user);
                             //goMainScreen();
                             genderchoose();
-                            Toast.makeText(context, "User: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "User: " + user.getDisplayName(), Toast.LENGTH_LONG).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -366,7 +226,7 @@ public class signin extends AppCompatActivity {
                     }
                 });
     }
-    // [END auth_with_google]
+
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -388,7 +248,8 @@ public class signin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            goMainScreen();
+            //goMainScreen();
+            //genderchoose();
         }
     }
 
@@ -421,126 +282,21 @@ public class signin extends AppCompatActivity {
 
     private void genderchoose(){
 
-            page=2;
-            relative1.setVisibility(View.GONE);
-            relative3.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            relative4.setVisibility(View.GONE);
-            relative5.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative2.setVisibility(View.VISIBLE);
-            back.setVisibility(View.GONE);
-        }
-        private void agechoose(){
+        relative1.setVisibility(View.GONE);
+        relative2.setVisibility(View.VISIBLE);
 
-            page=3;
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative4.setVisibility(View.GONE);
-            relative5.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            back.setVisibility(View.VISIBLE);
-            relative3.setVisibility(View.VISIBLE);
-
-        }
-        private void weightchoose(){
-
-            page=5;
-            relative3.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative5.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            relative4.setVisibility(View.VISIBLE);
-
-        }
-        private void weightchoose2(){
-
-            page=9;
-            relative3.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative5.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            relative4.setVisibility(View.VISIBLE);
-            back.setVisibility(View.VISIBLE);
-            next.setVisibility(View.VISIBLE);
-
-        }
-        private void heightchoose(){
-
-            page=6;
-            relative4.setVisibility(View.GONE);
-            relative3.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            relative5.setVisibility(View.VISIBLE);
-
-        }
-        private void routinechoose(){
-
-            page=7;
-            relative5.setVisibility(View.GONE);
-            relative3.setVisibility(View.GONE);
-            relative4.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative7.setVisibility(View.GONE);
-            relative6.setVisibility(View.VISIBLE);
-
-        }
-        private void uomchoose(){
-
-            page=4;
-            relative5.setVisibility(View.GONE);
-            relative3.setVisibility(View.GONE);
-            relative4.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.VISIBLE);
-
-        }
-        private void uomchoose2(){
-
-            page=8;
-            relative5.setVisibility(View.GONE);
-            relative3.setVisibility(View.GONE);
-            relative4.setVisibility(View.GONE);
-            relative2.setVisibility(View.GONE);
-            relative1.setVisibility(View.GONE);
-            relative6.setVisibility(View.GONE);
-            relative7.setVisibility(View.VISIBLE);
-            back.setVisibility(View.GONE);
-            next.setVisibility(View.VISIBLE);
-
-        }
-        private void createdb(){
-
-            age=Integer.toString(num1.getValue());
-            weight=Integer.toString(num2.getValue());
-            height=heightseek;
-            startd=Integer.toString(num3.getValue());
-
-            db.addUser(name,gender,age, weight, height, startd,url,units);
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-            boolean previouslyStarted = prefs.getBoolean(getString(R.string.pref_previously_started), false);
-
-            SharedPreferences.Editor edit = prefs.edit();
-            edit.putBoolean(getString(R.string.pref_previously_started), Boolean.TRUE);
-            edit.commit();
-
-
-        }
-        private void createdb2(){
-            db.addUser(db.getfullname(),db.getgender(),db.getage(), db.cweight(), db.height(), db.getday(),db.geturl(),""+  uom.getText());
-        }
+       /* URL newurl = null;
+        Bitmap mIcon_val = null;
+        try {
+            newurl = new URL(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
+            mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+            UserImage.setImageBitmap(mIcon_val);
+        } catch (IOException e) {
+            UserImage.setImageResource(R.drawable.profile);
+        }*/
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        UserName.setText(userId);
+    }
 
     private void goMainScreen() {
         new Handler().postDelayed(new Runnable() {
